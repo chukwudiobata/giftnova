@@ -1,18 +1,251 @@
-document.getElementById("signupForm").addEventListener(
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GiftNova | Gift Card Trading</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f3f6fc;
+            color: #172033;
+        }
+
+        header {
+            background: #123c8c;
+            color: white;
+            text-align: center;
+            padding: 28px 15px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        header p {
+            margin-bottom: 0;
+        }
+
+        main {
+            max-width: 650px;
+            margin: 25px auto;
+            padding: 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #00000010;
+        }
+
+        h2 {
+            color: #123c8c;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin: 15px 0 7px;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccd3df;
+            border-radius: 7px;
+            font-size: 16px;
+        }
+
+        button {
+            background: #123c8c;
+            color: white;
+            border: none;
+            margin-top: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .notice {
+            background: #fff4d6;
+            padding: 12px;
+            border-radius: 7px;
+            line-height: 1.5;
+        }
+
+        footer {
+            background: #123c8c;
+            color: white;
+            text-align: center;
+            padding: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>GiftNova</h1>
+    <p>Your Gift Card Trading Platform</p>
+</header>
+
+<main>
+
+    <section class="card">
+        <h2>Welcome to GiftNova</h2>
+        <p>
+            A simple platform for customers who want to
+            trade their gift cards.
+        </p>
+        <p>
+            Our goal is to provide transparent payout rates,
+            secure accounts and reliable customer support.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Create Your Account</h2>
+
+        <form id="signupForm">
+            <label for="fullname">Full Name</label>
+            <input
+                id="fullname"
+                type="text"
+                placeholder="Enter your full name"
+                required
+            >
+
+            <label for="email">Email Address</label>
+            <input
+                id="email"
+                type="email"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label for="password">Create Password</label>
+            <input
+                id="password"
+                type="password"
+                minlength="8"
+                placeholder="At least 8 characters"
+                required
+            >
+
+            <button type="submit">Create Account</button>
+        </form>
+
+        <p class="notice">
+            Registration is not connected to a secure account
+            system yet. Customers must not use this preview
+            to submit real passwords.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Check Gift Card Payout</h2>
+
+        <label for="giftcard">Gift Card Type</label>
+        <select id="giftcard" required>
+            <option value="">Select gift card</option>
+            <option>Apple</option>
+            <option>Amazon</option>
+            <option>Google Play</option>
+            <option>Steam</option>
+            <option>Razer Gold</option>
+            <option>Other</option>
+        </select>
+
+        <label for="country">Card Country</label>
+        <select id="country" required>
+            <option value="">Select country</option>
+            <option>United States</option>
+            <option>United Kingdom</option>
+            <option>Canada</option>
+            <option>Other</option>
+        </select>
+
+        <label for="amount">Card Value</label>
+        <input
+            id="amount"
+            type="number"
+            min="1"
+            placeholder="Enter card denomination"
+            required
+        >
+
+        <button type="button" id="checkRate">
+            Check Payout
+        </button>
+
+        <p id="rateResult" class="notice">
+            Verified live buying rates are not connected yet.
+            No payout amount will be invented.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Trade Updates</h2>
+        <p>
+            GiftNova will provide trade status updates after
+            the secure customer and trading systems are built.
+        </p>
+        <p>
+            Every submitted gift card must be reviewed before
+            payment is approved.
+        </p>
+    </section>
+
+    <section class="card">
+        <h2>Customer Support</h2>
+        <p>
+            A customer support centre will help customers
+            report problems and ask questions about their trades.
+        </p>
+        <p>
+            Support contact details will be added before launch.
+        </p>
+    </section>
+
+</main>
+
+<footer>
+    <p>&copy; 2026 GiftNova. All rights reserved.</p>
+</footer>
+
+<script>
+    document.getElementById("signupForm").addEventListener(
         "submit",
         function(event) {
             event.preventDefault();
+
             alert(
                 "This is a design preview. " +
                 "Secure registration must be configured before use."
             );
         }
     );
+
+    document.getElementById("checkRate").addEventListener(
+        "click",
+        function() {
+            const result = document.getElementById("rateResult");
+
+            result.textContent =
+                "Verified live buying rates are not connected yet. " +
+                "Please check back when the rate service is ready.";
+        }
+    );
 </script>
 
 </body>
 </html>
-Good, my brother! ❤️ Don't worry—we'll rebuild GiftNova together, step by step.
-Step 2: Put the GiftNova HTML code back
-Tap inside the empty box that says “Enter file content here.” Copy all the code below and paste it into that box.
-HTML
