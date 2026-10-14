@@ -2,36 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GiftNova | Gift Card Trading</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GiftNova - Gift Card Trading</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f4f7fb;
-      color: #172033;
+      background: #f2f5fa;
+      color: #18243a;
     }
 
     header {
       background: #10264f;
       color: white;
-      padding: 22px 15px;
+      padding: 25px 15px;
       text-align: center;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 30px;
-    }
-
-    header p {
-      margin-bottom: 0;
-    }
+    header h1 { margin: 0; font-size: 32px; }
+    header p { margin-bottom: 0; }
 
     main {
       max-width: 650px;
@@ -44,18 +36,15 @@
       padding: 22px;
       margin-bottom: 20px;
       border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+      box-shadow: 0 3px 12px #0000000d;
     }
 
-    h2 {
-      color: #10264f;
-      margin-top: 0;
-    }
+    h2 { color: #10264f; }
 
     label {
       display: block;
-      margin-top: 14px;
       font-weight: bold;
+      margin-top: 14px;
     }
 
     input, select, button {
@@ -66,27 +55,19 @@
       font-size: 16px;
     }
 
-    input, select {
-      border: 1px solid #ccd3df;
-      background: white;
-    }
+    input, select { border: 1px solid #ccd3df; }
 
     button {
-      border: none;
+      border: 0;
       background: #155eef;
       color: white;
       font-weight: bold;
       cursor: pointer;
     }
 
-    button:disabled {
-      opacity: 0.6;
-      cursor: wait;
-    }
+    button:disabled { opacity: 0.6; }
 
-    .secondary {
-      background: #10264f;
-    }
+    .secondary { background: #10264f; }
 
     .notice {
       background: #fff5d6;
@@ -95,12 +76,9 @@
       line-height: 1.5;
     }
 
-    #customer-area {
-      display: none;
-    }
+    #customer-area { display: none; }
 
-    #message {
-      white-space: pre-wrap;
+    #message, #rate-message {
       overflow-wrap: anywhere;
       line-height: 1.5;
     }
@@ -124,13 +102,10 @@
 
   <section class="card">
     <h2>Welcome to GiftNova</h2>
-    <p>
-      Create an account to get started. Sign in to access your
-      GiftNova customer area.
-    </p>
+    <p>Create an account to get started, or log in to your existing account.</p>
     <p class="notice">
-      GiftNova is under development. Gift card trading and payments
-      are not yet available.
+      GiftNova is under development. Gift-card trading and payments
+      are not available yet.
     </p>
   </section>
 
@@ -138,103 +113,67 @@
     <h2>Customer Account</h2>
 
     <label for="full-name">Full Name</label>
-    <input
-      id="full-name"
-      type="text"
-      autocomplete="name"
-      placeholder="Enter your full name"
-    >
+    <input id="full-name" type="text" autocomplete="name"
+      placeholder="Enter your full name">
 
     <label for="email">Email Address</label>
-    <input
-      id="email"
-      type="email"
-      autocomplete="email"
-      placeholder="Enter your email"
-      required
-    >
+    <input id="email" type="email" autocomplete="email"
+      placeholder="Enter your email">
 
     <label for="password">Password</label>
-    <input
-      id="password"
-      type="password"
-      autocomplete="current-password"
-      placeholder="Enter your password"
-      required
-    >
+    <input id="password" type="password" autocomplete="current-password"
+      placeholder="Enter your password">
 
-    <button id="signup-button" type="button">
-      Create Account
-    </button>
-
-    <button id="login-button" class="secondary" type="button">
-      Log In
-    </button>
+    <button id="signup-button" type="button">Create Account</button>
+    <button id="login-button" class="secondary" type="button">Log In</button>
 
     <p id="message" role="status" aria-live="polite"></p>
   </section>
 
   <section class="card" id="customer-area">
-    <h2>Your GiftNova Account</h2>
+    <h2>Your Account</h2>
     <p id="welcome-message"></p>
 
     <h3>Gift Card Price Checker</h3>
-    <p>
-      Check the payout information before submitting a gift card.
-    </p>
 
     <label for="gift-card">Gift Card</label>
     <select id="gift-card">
-      <option value="">Select a gift card</option>
-      <option value="Apple">Apple</option>
-      <option value="Amazon">Amazon</option>
-      <option value="Steam">Steam</option>
-      <option value="Google Play">Google Play</option>
-      <option value="iTunes">iTunes</option>
-      <option value="Razer Gold">Razer Gold</option>
+      <option value="">Select a card</option>
+      <option>Apple</option>
+      <option>Amazon</option>
+      <option>Steam</option>
+      <option>Google Play</option>
+      <option>iTunes</option>
+      <option>Razer Gold</option>
     </select>
 
     <label for="country">Card Country</label>
     <select id="country">
       <option value="">Select country</option>
-      <option value="United States">United States</option>
-      <option value="United Kingdom">United Kingdom</option>
-      <option value="Canada">Canada</option>
-      <option value="Other">Other</option>
+      <option>United States</option>
+      <option>United Kingdom</option>
+      <option>Canada</option>
+      <option>Other</option>
     </select>
 
     <label for="amount">Card Denomination</label>
-    <input
-      id="amount"
-      type="number"
-      min="1"
-      step="0.01"
-      placeholder="Enter card value"
-    >
+    <input id="amount" type="number" min="1" step="0.01"
+      placeholder="Enter card value">
 
-    <button id="check-rate-button" type="button">
-      Check Payout
-    </button>
-
+    <button id="check-rate-button" type="button">Check Payout</button>
     <p id="rate-message" role="status" aria-live="polite"></p>
 
     <hr>
 
-    <h3>Gift Card Trading</h3>
-    <p>
-      Gift card submission will become available after we configure
-      verified rates, secure card reviews, and payment processing.
+    <h3>Admin Area</h3>
+    <p id="admin-message">
+      Admin permissions and dashboard controls still need to be configured securely.
     </p>
 
     <h3>Customer Support</h3>
-    <p>
-      Support contact and complaint reporting will be configured
-      before launch.
-    </p>
+    <p>Customer complaints and support tools will be connected before launch.</p>
 
-    <button id="logout-button" class="secondary" type="button">
-      Log Out
-    </button>
+    <button id="logout-button" class="secondary" type="button">Log Out</button>
   </section>
 
 </main>
@@ -246,23 +185,37 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-  const SUPABASE_URL =
-    "https://qwovyidwvvqmgetoyzwe.supabase.co";
-
-  const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_JQ8gJtHVrVN1u6wsaEGwBg_CPZ6RKBf";
-
   const db = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
+    "https://qwovyidwvvqmgetoyzwe.supabase.co",
+    "sb_publishable_JQ8gJtHVrVN1u6wsaEGwBg_CPZ6RKBf"
   );
 
-  const message = document.getElementById("message");
   const accountArea = document.getElementById("account-area");
   const customerArea = document.getElementById("customer-area");
+  const message = document.getElementById("message");
 
   function showMessage(text) {
     message.textContent = text;
+  }
+
+  function showLoggedOut() {
+    accountArea.style.display = "block";
+    customerArea.style.display = "none";
+  }
+
+  function showLoggedIn(user) {
+    accountArea.style.display = "none";
+    customerArea.style.display = "block";
+
+    document.getElementById("welcome-message").textContent =
+      "You are logged in as " + user.email + ".";
+
+    document.getElementById("admin-message").textContent =
+      user.email.toLowerCase() === "chukwudiobata@gmail.com"
+        ? "Your email is recognised. Secure administrator permissions still need to be configured."
+        : "Administrator access is restricted.";
+
+    showMessage("");
   }
 
   function setBusy(busy) {
@@ -270,163 +223,5 @@
     document.getElementById("login-button").disabled = busy;
   }
 
-  function showCustomer(user) {
-    accountArea.style.display = "none";
-    customerArea.style.display = "block";
-
-    document.getElementById("welcome-message").textContent =
-      "You are logged in as " + user.email + ".";
-
-    showMessage("");
-  }
-
-  function showLogin() {
-    accountArea.style.display = "block";
-    customerArea.style.display = "none";
-  }
-
-  document.getElementById("signup-button").addEventListener(
-    "click",
-    async function () {
-      const name = document.getElementById("full-name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
-
-      if (!name || !email || !password) {
-        showMessage("Please enter your name, email and password.");
-        return;
-      }
-
-      if (password.length < 8) {
-        showMessage("Your password must be at least 8 characters.");
-        return;
-      }
-
-      setBusy(true);
-      showMessage("Creating your account...");
-
-      try {
-        const { data, error } = await db.auth.signUp({
-          email: email,
-          password: password,
-          options: {
-            data: {
-              full_name: name
-            }
-          }
-        });
-
-        if (error) throw error;
-
-        if (data.session && data.user) {
-          showCustomer(data.user);
-        } else {
-          showMessage(
-            "Your registration request was successful. " +
-            "Please log in if your account was created. " +
-            "If confirmation is required, follow the instructions sent to your email."
-          );
-        }
-      } catch (error) {
-        showMessage("Registration error: " + error.message);
-      } finally {
-        setBusy(false);
-      }
-    }
-  );
-
-  document.getElementById("login-button").addEventListener(
-    "click",
-    async function () {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value;
-
-      if (!email || !password) {
-        showMessage("Please enter your email and password.");
-        return;
-      }
-
-      setBusy(true);
-      showMessage("Logging in...");
-
-      try {
-        const { data, error } = await db.auth.signInWithPassword({
-          email: email,
-          password: password
-        });
-
-        if (error) throw error;
-
-        showCustomer(data.user);
-      } catch (error) {
-        showMessage("Login error: " + error.message);
-      } finally {
-        setBusy(false);
-      }
-    }
-  );
-
-  document.getElementById("logout-button").addEventListener(
-    "click",
-    async function () {
-      const { error } = await db.auth.signOut();
-
-      if (error) {
-        document.getElementById("welcome-message").textContent =
-          "Logout error: " + error.message;
-        return;
-      }
-
-      showLogin();
-      showMessage("You have logged out.");
-    }
-  );
-
-  document.getElementById("check-rate-button").addEventListener(
-    "click",
-    function () {
-      const card = document.getElementById("gift-card").value;
-      const country = document.getElementById("country").value;
-      const amount = document.getElementById("amount").value;
-      const rateMessage = document.getElementById("rate-message");
-
-      if (!card || !country || !amount || Number(amount) <= 0) {
-        rateMessage.textContent =
-          "Please select the card and country, and enter a valid denomination.";
-        return;
-      }
-
-      rateMessage.textContent =
-        "No verified payout rate is available yet. " +
-        "Please check again after the admin rate system is configured.";
-    }
-  );
-
-  async function restoreSession() {
-    const { data, error } = await db.auth.getSession();
-
-    if (error) {
-      showMessage("Unable to check your session. Please try again.");
-      return;
-    }
-
-    if (data.session) {
-      showCustomer(data.session.user);
-    } else {
-      showLogin();
-    }
-  }
-
-  db.auth.onAuthStateChange(function (event, session) {
-    if (session) {
-      showCustomer(session.user);
-    } else if (event === "SIGNED_OUT") {
-      showLogin();
-    }
-  });
-
-  restoreSession();
-</script>
-
-</body>
-</html>
+  document.getElementById("signup-button").addEventListener("click", async function () {
+    const name = document.getElementById("full-name").
