@@ -1,250 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GiftNova | Gift Card Trading</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GiftNova | Gift Card Trading</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f3f6fc;
-            color: #172033;
-        }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7fb;
+      color: #172033;
+    }
 
-        header {
-            background: #123c8c;
-            color: white;
-            text-align: center;
-            padding: 28px 15px;
-        }
+    header {
+      background: #10264f;
+      color: white;
+      padding: 22px 15px;
+      text-align: center;
+    }
 
-        header h1 {
-            font-size: 36px;
-            margin: 0;
-        }
+    header h1 {
+      margin: 0;
+      font-size: 30px;
+    }
 
-        header p {
-            margin-bottom: 0;
-        }
+    header p {
+      margin-bottom: 0;
+    }
 
-        main {
-            max-width: 650px;
-            margin: 25px auto;
-            padding: 15px;
-        }
+    main {
+      max-width: 650px;
+      margin: 25px auto;
+      padding: 15px;
+    }
 
-        .card {
-            background: white;
-            padding: 22px;
-            margin-bottom: 20px;
-            border-radius: 12px;
-            box-shadow: 0 3px 12px #00000010;
-        }
+    .card {
+      background: white;
+      padding: 22px;
+      margin-bottom: 20px;
+      border-radius: 12px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    }
 
-        h2 {
-            color: #123c8c;
-            margin-top: 0;
-        }
+    h2 {
+      color: #10264f;
+      margin-top: 0;
+    }
 
-        label {
-            display: block;
-            font-weight: bold;
-            margin: 15px 0 7px;
-        }
+    label {
+      display: block;
+      margin-top: 14px;
+      font-weight: bold;
+    }
 
-        input, select, button {
-            width: 100%;
-            padding: 13px;
-            border: 1px solid #ccd3df;
-            border-radius: 7px;
-            font-size: 16px;
-        }
+    input, select, button {
+      width: 100%;
+      padding: 13px;
+      margin-top: 7px;
+      border-radius: 7px;
+      font-size: 16px;
+    }
 
-        button {
-            background: #123c8c;
-            color: white;
-            border: none;
-            margin-top: 18px;
-            font-weight: bold;
-            cursor: pointer;
-        }
+    input, select {
+      border: 1px solid #ccd3df;
+      background: white;
+    }
 
-        .notice {
-            background: #fff4d6;
-            padding: 12px;
-            border-radius: 7px;
-            line-height: 1.5;
-        }
+    button {
+      border: none;
+      background: #155eef;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-        footer {
-            background: #123c8c;
-            color: white;
-            text-align: center;
-            padding: 18px;
-        }
-    </style>
+    button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    .secondary {
+      background: #10264f;
+    }
+
+    .notice {
+      background: #fff5d6;
+      padding: 12px;
+      border-radius: 7px;
+      line-height: 1.5;
+    }
+
+    #customer-area {
+      display: none;
+    }
+
+    #message {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #596579;
+    }
+  </style>
 </head>
 
 <body>
 
 <header>
-    <h1>GiftNova</h1>
-    <p>Your Gift Card Trading Platform</p>
+  <h1>GiftNova</h1>
+  <p>Your Gift Card Trading Platform</p>
 </header>
 
 <main>
 
-    <section class="card">
-        <h2>Welcome to GiftNova</h2>
-        <p>
-            A simple platform for customers who want to
-            trade their gift cards.
-        </p>
-        <p>
-            Our goal is to provide transparent payout rates,
-            secure accounts and reliable customer support.
-        </p>
-    </section>
+  <section class="card">
+    <h2>Welcome to GiftNova</h2>
+    <p>
+      Create an account to get started. Sign in to access your
+      GiftNova customer area.
+    </p>
+    <p class="notice">
+      GiftNova is under development. Gift card trading and payments
+      are not yet available.
+    </p>
+  </section>
 
-    <section class="card">
-        <h2>Create Your Account</h2>
+  <section class="card" id="account-area">
+    <h2>Customer Account</h2>
 
-        <form id="signupForm">
-            <label for="fullname">Full Name</label>
-            <input
-                id="fullname"
-                type="text"
-                placeholder="Enter your full name"
-                required
-            >
+    <label for="full-name">Full Name</label>
+    <input
+      id="full-name"
+      type="text"
+      autocomplete="name"
+      placeholder="Enter your full name"
+    >
 
-            <label for="email">Email Address</label>
-            <input
-                id="email"
-                type="email"
-                placeholder="Enter your email"
-                required
-            >
+    <label for="email">Email Address</label>
+    <input
+      id="email"
+      type="email"
+      autocomplete="email"
+      placeholder="Enter your email"
+      required
+    >
 
-            <label for="password">Create Password</label>
-            <input
-                id="password"
-                type="password"
-                minlength="8"
-                placeholder="At least 8 characters"
-                required
-            >
+    <label for="password">Password</label>
+    <input
+      id="password"
+      type="password"
+      autocomplete="current-password"
+      placeholder="Enter your password"
+      required
+    >
 
-            <button type="submit">Create Account</button>
-        </form>
+    <button id="signup-button" type="button">
+      Create Account
+    </button>
 
-        <p class="notice">
-            Registration is not connected to a secure account
-            system yet. Customers must not use this preview
-            to submit real passwords.
-        </p>
-    </section>
+    <button id="login-button" class="secondary" type="button">
+      Log In
+    </button>
 
-    <section class="card">
-        <h2>Check Gift Card Payout</h2>
+    <p id="message" role="status" aria-live="polite"></p>
+  </section>
 
-        <label for="giftcard">Gift Card Type</label>
-        <select id="giftcard" required>
-            <option value="">Select gift card</option>
-            <option>Apple</option>
-            <option>Amazon</option>
-            <option>Google Play</option>
-            <option>Steam</option>
-            <option>Razer Gold</option>
-            <option>Other</option>
-        </select>
+  <section class="card" id="customer-area">
+    <h2>Your GiftNova Account</h2>
+    <p id="welcome-message"></p>
 
-        <label for="country">Card Country</label>
-        <select id="country" required>
-            <option value="">Select country</option>
-            <option>United States</option>
-            <option>United Kingdom</option>
-            <option>Canada</option>
-            <option>Other</option>
-        </select>
+    <h3>Gift Card Price Checker</h3>
+    <p>
+      Check the payout information before submitting a gift card.
+    </p>
 
-        <label for="amount">Card Value</label>
-        <input
-            id="amount"
-            type="number"
-            min="1"
-            placeholder="Enter card denomination"
-            required
-        >
+    <label for="gift-card">Gift Card</label>
+    <select id="gift-card">
+      <option value="">Select a gift card</option>
+      <option value="Apple">Apple</option>
+      <option value="Amazon">Amazon</option>
+      <option value="Steam">Steam</option>
+      <option value="Google Play">Google Play</option>
+      <option value="iTunes">iTunes</option>
+      <option value="Razer Gold">Razer Gold</option>
+    </select>
 
-        <button type="button" id="checkRate">
-            Check Payout
-        </button>
+    <label for="country">Card Country</label>
+    <select id="country">
+      <option value="">Select country</option>
+      <option value="United States">United States</option>
+      <option value="United Kingdom">United Kingdom</option>
+      <option value="Canada">Canada</option>
+      <option value="Other">Other</option>
+    </select>
 
-        <p id="rateResult" class="notice">
-            Verified live buying rates are not connected yet.
-            No payout amount will be invented.
-        </p>
-    </section>
+    <label for="amount">Card Denomination</label>
+    <input
+      id="amount"
+      type="number"
+      min="1"
+      step="0.01"
+      placeholder="Enter card value"
+    >
 
-    <section class="card">
-        <h2>Trade Updates</h2>
-        <p>
-            GiftNova will provide trade status updates after
-            the secure customer and trading systems are built.
-        </p>
-        <p>
-            Every submitted gift card must be reviewed before
-            payment is approved.
-        </p>
-    </section>
+    <button id="check-rate-button" type="button">
+      Check Payout
+    </button>
 
-    <section class="card">
-        <h2>Customer Support</h2>
-        <p>
-            A customer support centre will help customers
-            report problems and ask questions about their trades.
-        </p>
-        <p>
-            Support contact details will be added before launch.
-        </p>
-    </section>
+    <p id="rate-message" role="status" aria-live="polite"></p>
+
+    <hr>
+
+    <h3>Gift Card Trading</h3>
+    <p>
+      Gift card submission will become available after we configure
+      verified rates, secure card reviews, and payment processing.
+    </p>
+
+    <h3>Customer Support</h3>
+    <p>
+      Support contact and complaint reporting will be configured
+      before launch.
+    </p>
+
+    <button id="logout-button" class="secondary" type="button">
+      Log Out
+    </button>
+  </section>
 
 </main>
 
 <footer>
-    <p>&copy; 2026 GiftNova. All rights reserved.</p>
+  <p>&copy; 2026 GiftNova. All rights reserved.</p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-    document.getElementById("signupForm").addEventListener(
-        "submit",
-        function(event) {
-            event.preventDefault();
+  const SUPABASE_URL =
+    "https://qwovyidwvvqmgetoyzwe.supabase.co";
 
-            alert(
-                "This is a design preview. " +
-                "Secure registration must be configured before use."
-            );
+  const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_JQ8gJtHVrVN1u6wsaEGwBg_CPZ6RKBf";
+
+  const db = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+  const message = document.getElementById("message");
+  const accountArea = document.getElementById("account-area");
+  const customerArea = document.getElementById("customer-area");
+
+  function showMessage(text) {
+    message.textContent = text;
+  }
+
+  function setBusy(busy) {
+    document.getElementById("signup-button").disabled = busy;
+    document.getElementById("login-button").disabled = busy;
+  }
+
+  function showCustomer(user) {
+    accountArea.style.display = "none";
+    customerArea.style.display = "block";
+
+    document.getElementById("welcome-message").textContent =
+      "You are logged in as " + user.email + ".";
+
+    showMessage("");
+  }
+
+  function showLogin() {
+    accountArea.style.display = "block";
+    customerArea.style.display = "none";
+  }
+
+  document.getElementById("signup-button").addEventListener(
+    "click",
+    async function () {
+      const name = document.getElementById("full-name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (!name || !email || !password) {
+        showMessage("Please enter your name, email and password.");
+        return;
+      }
+
+      if (password.length < 8) {
+        showMessage("Your password must be at least 8 characters.");
+        return;
+      }
+
+      setBusy(true);
+      showMessage("Creating your account...");
+
+      try {
+        const { data, error } = await db.auth.signUp({
+          email: email,
+          password: password,
+          options: {
+            data: {
+              full_name: name
+            }
+          }
+        });
+
+        if (error) throw error;
+
+        if (data.session && data.user) {
+          showCustomer(data.user);
+        } else {
+          showMessage(
+            "Your registration request was successful. " +
+            "Please log in if your account was created. " +
+            "If confirmation is required, follow the instructions sent to your email."
+          );
         }
-    );
+      } catch (error) {
+        showMessage("Registration error: " + error.message);
+      } finally {
+        setBusy(false);
+      }
+    }
+  );
 
-    document.getElementById("checkRate").addEventListener(
-        "click",
-        function() {
-            const result = document.getElementById("rateResult");
+  document.getElementById("login-button").addEventListener(
+    "click",
+    async function () {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
 
-            result.textContent =
-                "Verified live buying rates are not connected yet. " +
-                "Please check back when the rate service is ready.";
-        }
-    );
+      if (!email || !password) {
+        showMessage("Please enter your email and password.");
+        return;
+      }
+
+      setBusy(true);
+      showMessage("Logging in...");
+
+      try {
+        const { data, error } = await db.auth.signInWithPassword({
+          email: email,
+          password: password
+        });
+
+        if (error) throw error;
+
+        showCustomer(data.user);
+      } catch (error) {
+        showMessage("Login error: " + error.message);
+      } finally {
+        setBusy(false);
+      }
+    }
+  );
+
+  document.getElementById("logout-button").addEventListener(
+    "click",
+    async function () {
+      const { error } = await db.auth.signOut();
+
+      if (error) {
+        document.getElementById("welcome-message").textContent =
+          "Logout error: " + error.message;
+        return;
+      }
+
+      showLogin();
+      showMessage("You have logged out.");
+    }
+  );
+
+  document.getElementById("check-rate-button").addEventListener(
+    "click",
+    function () {
+      const card = document.getElementById("gift-card").value;
+      const country = document.getElementById("country").value;
+      const amount = document.getElementById("amount").value;
+      const rateMessage = document.getElementById("rate-message");
+
+      if (!card || !country || !amount || Number(amount) <= 0) {
+        rateMessage.textContent =
+          "Please select the card and country, and enter a valid denomination.";
+        return;
+      }
+
+      rateMessage.textContent =
+        "No verified payout rate is available yet. " +
+        "Please check again after the admin rate system is configured.";
+    }
+  );
+
+  async function restoreSession() {
+    const { data, error } = await db.auth.getSession();
+
+    if (error) {
+      showMessage("Unable to check your session. Please try again.");
+      return;
+    }
+
+    if (data.session) {
+      showCustomer(data.session.user);
+    } else {
+      showLogin();
+    }
+  }
+
+  db.auth.onAuthStateChange(function (event, session) {
+    if (session) {
+      showCustomer(session.user);
+    } else if (event === "SIGNED_OUT") {
+      showLogin();
+    }
+  });
+
+  restoreSession();
 </script>
 
 </body>
