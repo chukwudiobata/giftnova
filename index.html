@@ -2,226 +2,236 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>GiftNova - Gift Card Trading</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f2f5fa;
-      color: #18243a;
+      background: #f4f7fc;
+      color: #202944;
     }
 
     header {
-      background: #10264f;
+      background: #152b65;
       color: white;
-      padding: 25px 15px;
+      padding: 24px 16px;
       text-align: center;
     }
 
-    header h1 { margin: 0; font-size: 32px; }
-    header p { margin-bottom: 0; }
+    header h1 {
+      margin: 0;
+      font-size: 32px;
+    }
+
+    header p {
+      margin-bottom: 0;
+      color: #dce6ff;
+    }
 
     main {
-      max-width: 650px;
-      margin: 25px auto;
-      padding: 15px;
+      max-width: 700px;
+      margin: auto;
+      padding: 18px;
+    }
+
+    .notice {
+      background: #fff3cd;
+      color: #755500;
+      padding: 14px;
+      border-radius: 8px;
+      line-height: 1.6;
+      margin-bottom: 20px;
     }
 
     .card {
       background: white;
-      padding: 22px;
+      padding: 20px;
       margin-bottom: 20px;
       border-radius: 12px;
       box-shadow: 0 3px 12px #0000000d;
     }
 
-    h2 { color: #10264f; }
+    h2 {
+      color: #152b65;
+      margin-top: 0;
+    }
 
     label {
       display: block;
-      font-weight: bold;
       margin-top: 14px;
+      font-weight: bold;
     }
 
-    input, select, button {
+    input, select, textarea {
       width: 100%;
-      padding: 13px;
+      padding: 12px;
       margin-top: 7px;
+      border: 1px solid #ccd3e0;
       border-radius: 7px;
       font-size: 16px;
     }
 
-    input, select { border: 1px solid #ccd3df; }
-
     button {
-      border: 0;
-      background: #155eef;
+      width: 100%;
+      padding: 13px;
+      margin-top: 16px;
+      background: #2457db;
       color: white;
+      border: none;
+      border-radius: 7px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
     }
 
-    button:disabled { opacity: 0.6; }
-
-    .secondary { background: #10264f; }
-
-    .notice {
-      background: #fff5d6;
-      padding: 12px;
-      border-radius: 7px;
-      line-height: 1.5;
+    button.secondary {
+      background: #152b65;
     }
 
-    #customer-area { display: none; }
+    .gift-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
 
-    #message, #rate-message {
-      overflow-wrap: anywhere;
+    .gift {
+      padding: 18px 8px;
+      text-align: center;
+      background: #eef3ff;
+      border-radius: 9px;
+      font-weight: bold;
+    }
+
+    .small {
+      font-size: 13px;
+      color: #626d80;
+      line-height: 1.6;
+    }
+
+    #message {
+      padding: 12px;
+      border-radius: 7px;
+      margin-top: 12px;
+      display: none;
       line-height: 1.5;
     }
 
     footer {
       text-align: center;
-      padding: 20px;
-      color: #596579;
+      padding: 25px 12px;
+      color: #667085;
     }
   </style>
 </head>
 
 <body>
 
-<header>
-  <h1>GiftNova</h1>
-  <p>Your Gift Card Trading Platform</p>
-</header>
+  <header>
+    <h1>🎁 GiftNova</h1>
+    <p>Your Gift Card Trading Platform</p>
+  </header>
 
-<main>
+  <main>
 
-  <section class="card">
-    <h2>Welcome to GiftNova</h2>
-    <p>Create an account to get started, or log in to your existing account.</p>
-    <p class="notice">
-      GiftNova is under development. Gift-card trading and payments
-      are not available yet.
-    </p>
-  </section>
+    <section class="card">
+      <h2>Welcome to GiftNova</h2>
+      <p>
+        Buy and trade gift cards with confidence.
+        Create your account to prepare for our launch.
+      </p>
 
-  <section class="card" id="account-area">
-    <h2>Customer Account</h2>
+      <div class="notice">
+        <strong>🚧 Under Development</strong><br>
+        GiftNova is being developed. Gift-card trading,
+        card redemption and payments are not available yet.
+      </div>
+    </section>
 
-    <label for="full-name">Full Name</label>
-    <input id="full-name" type="text" autocomplete="name"
-      placeholder="Enter your full name">
+    <section class="card" id="account">
+      <h2>Customer Account</h2>
 
-    <label for="email">Email Address</label>
-    <input id="email" type="email" autocomplete="email"
-      placeholder="Enter your email">
+      <p>Create an account or log in to continue.</p>
 
-    <label for="password">Password</label>
-    <input id="password" type="password" autocomplete="current-password"
-      placeholder="Enter your password">
+      <form id="signupForm">
+        <h3>Create Account</h3>
 
-    <button id="signup-button" type="button">Create Account</button>
-    <button id="login-button" class="secondary" type="button">Log In</button>
+        <label for="fullName">Full Name</label>
+        <input
+          id="fullName"
+          type="text"
+          autocomplete="name"
+          required
+          placeholder="Enter your full name"
+        >
 
-    <p id="message" role="status" aria-live="polite"></p>
-  </section>
+        <label for="signupEmail">Email Address</label>
+        <input
+          id="signupEmail"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder="Enter your email"
+        >
 
-  <section class="card" id="customer-area">
-    <h2>Your Account</h2>
-    <p id="welcome-message"></p>
+        <label for="signupPassword">Password</label>
+        <input
+          id="signupPassword"
+          type="password"
+          autocomplete="new-password"
+          minlength="8"
+          required
+          placeholder="Create a password"
+        >
 
-    <h3>Gift Card Price Checker</h3>
+        <button type="submit">Create Account</button>
+      </form>
 
-    <label for="gift-card">Gift Card</label>
-    <select id="gift-card">
-      <option value="">Select a card</option>
-      <option>Apple</option>
-      <option>Amazon</option>
-      <option>Steam</option>
-      <option>Google Play</option>
-      <option>iTunes</option>
-      <option>Razer Gold</option>
-    </select>
+      <hr style="margin:25px 0; border:0; border-top:1px solid #eee">
 
-    <label for="country">Card Country</label>
-    <select id="country">
-      <option value="">Select country</option>
-      <option>United States</option>
-      <option>United Kingdom</option>
-      <option>Canada</option>
-      <option>Other</option>
-    </select>
+      <form id="loginForm">
+        <h3>Log In</h3>
 
-    <label for="amount">Card Denomination</label>
-    <input id="amount" type="number" min="1" step="0.01"
-      placeholder="Enter card value">
+        <label for="loginEmail">Email Address</label>
+        <input
+          id="loginEmail"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder="Enter your email"
+        >
 
-    <button id="check-rate-button" type="button">Check Payout</button>
-    <p id="rate-message" role="status" aria-live="polite"></p>
+        <label for="loginPassword">Password</label>
+        <input
+          id="loginPassword"
+          type="password"
+          autocomplete="current-password"
+          required
+          placeholder="Enter your password"
+        >
 
-    <hr>
+        <button type="submit" class="secondary">Log In</button>
+      </form>
 
-    <h3>Admin Area</h3>
-    <p id="admin-message">
-      Admin permissions and dashboard controls still need to be configured securely.
-    </p>
+      <div id="message" role="status" aria-live="polite"></div>
 
-    <h3>Customer Support</h3>
-    <p>Customer complaints and support tools will be connected before launch.</p>
+      <p class="small">
+        Account registration and login will be enabled after
+        secure authentication is connected.
+      </p>
+    </section>
 
-    <button id="logout-button" class="secondary" type="button">Log Out</button>
-  </section>
+    <section class="card">
+      <h2>Available Gift Card Categories</h2>
+      <p>Explore the gift cards we plan to support.</p>
 
-</main>
-
-<footer>
-  <p>&copy; 2026 GiftNova. All rights reserved.</p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-  const db = window.supabase.createClient(
-    "https://qwovyidwvvqmgetoyzwe.supabase.co",
-    "sb_publishable_JQ8gJtHVrVN1u6wsaEGwBg_CPZ6RKBf"
-  );
-
-  const accountArea = document.getElementById("account-area");
-  const customerArea = document.getElementById("customer-area");
-  const message = document.getElementById("message");
-
-  function showMessage(text) {
-    message.textContent = text;
-  }
-
-  function showLoggedOut() {
-    accountArea.style.display = "block";
-    customerArea.style.display = "none";
-  }
-
-  function showLoggedIn(user) {
-    accountArea.style.display = "none";
-    customerArea.style.display = "block";
-
-    document.getElementById("welcome-message").textContent =
-      "You are logged in as " + user.email + ".";
-
-    document.getElementById("admin-message").textContent =
-      user.email.toLowerCase() === "chukwudiobata@gmail.com"
-        ? "Your email is recognised. Secure administrator permissions still need to be configured."
-        : "Administrator access is restricted.";
-
-    showMessage("");
-  }
-
-  function setBusy(busy) {
-    document.getElementById("signup-button").disabled = busy;
-    document.getElementById("login-button").disabled = busy;
-  }
-
-  document.getElementById("signup-button").addEventListener("click", async function () {
-    const name = document.getElementById("full-name").
+      <div class="gift-grid">
+        <div class="gift">🍎 Apple Gift Card</div>
+        <div class="gift">📦 Amazon Gift Card</div>
+        <div class="gift">🎮
