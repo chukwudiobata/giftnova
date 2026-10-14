@@ -3,46 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#14275c">
-  <title>GiftNova - Gift Card Trading Platform</title>
+  <title>GiftNova | Gift Card Trading</title>
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #f3f6fc;
-      color: #202b45;
+      background: #f4f6fb;
+      color: #222;
       line-height: 1.6;
     }
 
     header {
-      background: #14275c;
+      background: #4527a0;
       color: white;
       text-align: center;
-      padding: 25px 15px;
+      padding: 24px 15px;
     }
 
     header h1 {
       margin: 0;
-      font-size: 34px;
+      font-size: 32px;
     }
 
-    header p { margin-bottom: 0; }
+    header p {
+      margin: 5px 0 0;
+    }
 
     nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      background: white;
-      padding: 14px;
+      background: #311b92;
+      padding: 12px;
+      text-align: center;
     }
 
     nav a {
-      color: #14275c;
+      display: inline-block;
+      color: white;
       text-decoration: none;
+      margin: 5px 10px;
       font-weight: bold;
     }
 
@@ -55,89 +57,106 @@
     .card {
       background: white;
       padding: 22px;
-      margin-bottom: 20px;
+      margin: 18px 0;
       border-radius: 12px;
-      box-shadow: 0 3px 12px #0000000c;
+      box-shadow: 0 2px 10px #0000000d;
     }
 
-    h2 { color: #14275c; }
-
-    .notice {
-      background: #fff1c9;
-      border-left: 5px solid #e2a000;
-      padding: 15px;
-      border-radius: 7px;
+    h2 {
+      color: #4527a0;
+      margin-top: 0;
     }
 
-    label {
-      display: block;
-      margin-top: 14px;
-      font-weight: bold;
-    }
-
-    input, select, textarea {
+    input,
+    select,
+    textarea,
+    button {
       width: 100%;
       padding: 12px;
-      margin-top: 6px;
-      border: 1px solid #ccd3e0;
+      margin: 8px 0;
       border-radius: 7px;
       font-size: 16px;
+    }
+
+    input,
+    select,
+    textarea {
+      border: 1px solid #ccc;
+      background: white;
     }
 
     button {
-      width: 100%;
-      padding: 13px;
-      margin-top: 16px;
-      border: 0;
-      border-radius: 7px;
-      background: #2457db;
+      background: #4527a0;
       color: white;
-      font-size: 16px;
+      border: none;
+      cursor: pointer;
       font-weight: bold;
     }
 
-    .gift-grid {
+    button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    .secondary-button {
+      background: #555;
+    }
+
+    .notice {
+      background: #fff3cd;
+      padding: 12px;
+      border-radius: 8px;
+      color: #664d03;
+    }
+
+    .success {
+      color: #16743b;
+      overflow-wrap: anywhere;
+    }
+
+    .error {
+      color: #b42318;
+      overflow-wrap: anywhere;
+    }
+
+    .muted {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
     }
 
     .gift {
-      padding: 18px 8px;
+      background: #f4f0ff;
+      border-radius: 10px;
+      padding: 16px 8px;
       text-align: center;
-      background: #eef3ff;
-      border-radius: 9px;
       font-weight: bold;
     }
 
-    .icon {
+    .gift span {
       display: block;
-      font-size: 27px;
-      margin-bottom: 5px;
+      font-size: 28px;
     }
 
-    .small {
-      color: #657087;
-      font-size: 13px;
-    }
-
-    .message {
-      display: none;
-      margin-top: 14px;
-      padding: 12px;
-      background: #eef3ff;
-      border-radius: 7px;
+    .hidden {
+      display: none !important;
     }
 
     footer {
-      background: #14275c;
+      background: #311b92;
       color: white;
       text-align: center;
-      padding: 24px 12px;
+      padding: 20px;
+      margin-top: 25px;
     }
 
     @media (min-width: 600px) {
-      .gift-grid {
+      .grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
       }
     }
@@ -146,232 +165,392 @@
 
 <body>
 
-  <header>
-    <h1>🎁 GiftNova</h1>
-    <p>Your Gift Card Trading Platform</p>
-  </header>
+<header>
+  <h1>🎁 GiftNova</h1>
+  <p>Your Gift Card Trading Platform</p>
+</header>
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#account">My Account</a>
-    <a href="#giftcards">Gift Cards</a>
-    <a href="#submit">Submit Card</a>
-    <a href="#support">Support</a>
-  </nav>
+<nav>
+  <a href="#home">Home</a>
+  <a href="#gifts">Gift Cards</a>
+  <a href="#account">Account</a>
+  <a href="#support">Support</a>
+</nav>
 
-  <main>
+<main>
 
-    <section class="card" id="home">
-      <h2>Welcome to GiftNova</h2>
-      <p>
-        Welcome to GiftNova! Explore our planned gift card
-        categories and prepare for our upcoming launch.
-      </p>
+  <section class="card" id="home">
+    <h2>Welcome to GiftNova</h2>
+    <p>
+      Welcome to GiftNova, your planned platform for gift card
+      trading and customer support.
+    </p>
 
-      <div class="notice">
-        <strong>🚧 GiftNova is under development.</strong>
-        <br>
-        Customer accounts, gift card trading, verification
-        and payments are not available yet.
-      </div>
-    </section>
+    <div class="notice">
+      <strong>Important:</strong> Gift card trading is not active yet.
+      Never send gift card PINs or redemption codes through this website.
+    </div>
+  </section>
 
-    <section class="card" id="account">
-      <h2>Customer Account</h2>
-      <p>Every customer will need an account to use GiftNova.</p>
+  <!-- CUSTOMER ACCOUNT SECTION -->
+
+  <section class="card" id="account">
+    <h2>🔐 Customer Account</h2>
+
+    <p id="authStatus" aria-live="polite">
+      Checking your account...
+    </p>
+
+    <div id="authForms">
+
+      <h3>Create an Account</h3>
 
       <form id="signupForm">
-        <h3>Create Account</h3>
-
-        <label for="fullName">Full Name</label>
-        <input id="fullName" type="text"
-          autocomplete="name" required
-          placeholder="Enter your full name">
-
         <label for="signupEmail">Email Address</label>
-        <input id="signupEmail" type="email"
-          autocomplete="email" required
-          placeholder="Enter your email address">
+        <input
+          id="signupEmail"
+          type="email"
+          autocomplete="email"
+          placeholder="Enter your email"
+          required
+        >
 
-        <label for="signupPassword">Password</label>
-        <input id="signupPassword" type="password"
-          autocomplete="new-password" minlength="8"
-          required placeholder="Create a password">
+        <label for="signupPassword">Create Password</label>
+        <input
+          id="signupPassword"
+          type="password"
+          autocomplete="new-password"
+          minlength="8"
+          placeholder="Create a password (at least 8 characters)"
+          required
+        >
 
-        <button type="submit">Create Account</button>
+        <button id="signupButton" type="submit">
+          Sign Up
+        </button>
       </form>
 
-      <hr style="margin:25px 0;border:0;border-top:1px solid #eee">
+      <hr>
+
+      <h3>Already Have an Account?</h3>
 
       <form id="loginForm">
-        <h3>Log In</h3>
-
         <label for="loginEmail">Email Address</label>
-        <input id="loginEmail" type="email"
-          autocomplete="email" required
-          placeholder="Enter your email address">
+        <input
+          id="loginEmail"
+          type="email"
+          autocomplete="email"
+          placeholder="Enter your email"
+          required
+        >
 
         <label for="loginPassword">Password</label>
-        <input id="loginPassword" type="password"
-          autocomplete="current-password" required
-          placeholder="Enter your password">
+        <input
+          id="loginPassword"
+          type="password"
+          autocomplete="current-password"
+          placeholder="Enter your password"
+          required
+        >
 
-        <button type="submit">Log In</button>
+        <button id="loginButton" type="submit">
+          Log In
+        </button>
       </form>
 
-      <div class="message" id="accountMessage"
-        role="status" aria-live="polite"></div>
+    </div>
 
-      <p class="small">
-        Secure authentication must be connected before
-        accounts can be created or customers can log in.
-      </p>
-    </section>
+    <div id="accountArea" class="hidden">
+      <h3>Welcome to your account!</h3>
 
-    <section class="card" id="giftcards">
-      <h2>Available Gift Card Categories</h2>
-      <p>Explore our 11 planned gift card categories.</p>
-
-      <div class="gift-grid">
-        <div class="gift"><span class="icon">🍎</span>Apple Gift Card</div>
-        <div class="gift"><span class="icon">📦</span>Amazon Gift Card</div>
-        <div class="gift"><span class="icon">🎮</span>Google Play</div>
-        <div class="gift"><span class="icon">🕹️</span>Steam Gift Card</div>
-        <div class="gift"><span class="icon">🎁</span>Razer Gold</div>
-        <div class="gift"><span class="icon">💳</span>Amex</div>
-        <div class="gift"><span class="icon">🛍️</span>Nordstrom</div>
-        <div class="gift"><span class="icon">🎮</span>PlayStation</div>
-        <div class="gift"><span class="icon">🛍️</span>Macy's</div>
-        <div class="gift"><span class="icon">🎁</span>Vanilla</div>
-        <div class="gift"><span class="icon">💄</span>Sephora</div>
-      </div>
-
-      <p class="small">
-        These categories are for display only. Trading is not active.
-      </p>
-    </section>
-
-    <section class="card" id="submit">
-      <h2>Submit a Gift Card</h2>
       <p>
-        GiftNova plans to provide a gift card submission
-        and verification service after launch.
+        Logged in as:
+        <strong id="customerEmail"></strong>
       </p>
 
-      <form id="giftForm">
-        <label for="giftType">Gift Card Type</label>
-        <select id="giftType" required>
-          <option value="">Choose a gift card</option>
-          <option>Apple Gift Card</option>
-          <option>Amazon Gift Card</option>
-          <option>Google Play</option>
-          <option>Steam Gift Card</option>
-          <option>Razer Gold</option>
-          <option>Amex</option>
-          <option>Nordstrom</option>
-          <option>PlayStation</option>
-          <option>Macy's</option>
-          <option>Vanilla</option>
-          <option>Sephora</option>
-        </select>
-
-        <label for="giftValue">Gift Card Value</label>
-        <input id="giftValue" type="number" min="1"
-          required placeholder="Enter card value">
-
-        <label for="currency">Currency</label>
-        <select id="currency">
-          <option value="USD">USD - US Dollar</option>
-          <option value="NGN">NGN - Nigerian Naira</option>
-          <option value="GBP">GBP - British Pound</option>
-          <option value="CAD">CAD - Canadian Dollar</option>
-        </select>
-
-        <button type="submit">Trading Coming Soon</button>
-      </form>
-
-      <div class="message" id="giftMessage" role="status"></div>
-
-      <p class="small">
-        This form does not submit or redeem cards.
-        Do not enter gift card PINs or redemption codes here.
+      <p class="muted">
+        Your account is active. Gift card trading is not yet available.
       </p>
-    </section>
 
-    <section class="card" id="support">
-      <h2>Customer Support</h2>
+      <button id="logoutButton" class="secondary-button" type="button">
+        Log Out
+      </button>
+    </div>
+
+    <p id="authMessage" aria-live="polite"></p>
+  </section>
+
+  <!-- GIFT CARD CATEGORIES -->
+
+  <section class="card" id="gifts">
+    <h2>🎁 Gift Card Categories</h2>
+
+    <p>
+      These categories are displayed for planning purposes.
+      Trading is not active yet.
+    </p>
+
+    <div class="grid">
+      <div class="gift"><span>🍎</span>Apple Gift Card</div>
+      <div class="gift"><span>📦</span>Amazon Gift Card</div>
+      <div class="gift"><span>▶️</span>Google Play</div>
+      <div class="gift"><span>🎮</span>Steam Gift Card</div>
+      <div class="gift"><span>🎁</span>Razer Gold</div>
+      <div class="gift"><span>💳</span>Amex</div>
+      <div class="gift"><span>🛍️</span>Nordstrom</div>
+      <div class="gift"><span>🎮</span>PlayStation</div>
+      <div class="gift"><span>🛍️</span>Macy's</div>
+      <div class="gift"><span>🎁</span>Vanilla</div>
+      <div class="gift"><span>💄</span>Sephora</div>
+    </div>
+  </section>
+
+  <!-- TRADING SECTION -->
+
+  <section class="card" id="trading">
+    <h2>💳 Submit a Gift Card</h2>
+
+    <div class="notice">
+      <strong>Trading Coming Soon</strong>
       <p>
-        Our customer support centre is being prepared
-        for the official launch.
+        GiftNova is preparing its gift card submission and
+        verification service.
       </p>
+    </div>
 
-      <form id="supportForm">
-        <label for="supportEmail">Email Address</label>
-        <input id="supportEmail" type="email"
-          required placeholder="Enter your email">
+    <p>
+      The submission system is not connected yet. Please do not
+      submit card details, PINs, or redemption codes.
+    </p>
+  </section>
 
-        <label for="supportText">Describe Your Problem</label>
-        <textarea id="supportText" rows="4"
-          required placeholder="Tell us how we can help"></textarea>
+  <!-- CUSTOMER SUPPORT -->
 
-        <button type="submit">Support Coming Soon</button>
-      </form>
+  <section class="card" id="support">
+    <h2>📩 Customer Support</h2>
 
-      <div class="message" id="supportNotice" role="status"></div>
+    <p>
+      Our customer support centre is being prepared for the
+      official launch.
+    </p>
 
-      <p class="small">
-        This form is not connected to a support team.
-        Messages are not sent or stored.
-      </p>
-    </section>
+    <p>
+      Support messages cannot currently be sent or stored through
+      this website.
+    </p>
 
-  </main>
+    <p class="muted">
+      Support email integration will be added after the secure
+      backend is configured.
+    </p>
+  </section>
 
-  <footer>
-    <p><strong>🎁 GiftNova</strong></p>
-    <p>Your Gift Card Trading Platform</p>
-    <p>© 2026 GiftNova. All rights reserved.</p>
-  </footer>
+</main>
 
-  <script>
-    function showMessage(id, text) {
-      const box = document.getElementById(id);
-      box.textContent = text;
-      box.style.display = "block";
+<footer>
+  <strong>🎁 GiftNova</strong>
+  <p>Your Gift Card Trading Platform</p>
+  <p>© 2026 GiftNova. All rights reserved.</p>
+</footer>
+
+<!-- SUPABASE CONNECTION -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  const SUPABASE_URL =
+    "https://qwovyidwvvqmgetoyzwe.supabase.co";
+
+  const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_JQ8gJtHVrVN1u6wsaEGwBg_CPZ6RKBf";
+
+  const status = document.getElementById("authStatus");
+  const message = document.getElementById("authMessage");
+  const forms = document.getElementById("authForms");
+  const accountArea = document.getElementById("accountArea");
+  const customerEmail = document.getElementById("customerEmail");
+
+  function showMessage(text, type) {
+    message.textContent = text;
+    message.className = type || "";
+  }
+
+  function setBusy(button, busy, label) {
+    button.disabled = busy;
+    button.textContent = busy ? "Please wait..." : label;
+  }
+
+  if (!window.supabase) {
+    status.textContent = "Unable to load the account service.";
+    showMessage(
+      "Please refresh the page and try again.",
+      "error"
+    );
+    return;
+  }
+
+  const client = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+  window.giftNovaSupabase = client;
+
+  function updateAccount(user) {
+    const loggedIn = Boolean(user);
+
+    forms.classList.toggle("hidden", loggedIn);
+    accountArea.classList.toggle("hidden", !loggedIn);
+
+    status.textContent = loggedIn
+      ? "You are logged in."
+      : "Please sign up or log in to access your customer account.";
+
+    customerEmail.textContent =
+      loggedIn && user.email ? user.email : "";
+
+    if (!loggedIn) {
+      showMessage("", "");
     }
+  }
 
-    document.getElementById("signupForm")
-      .addEventListener("submit", function(event) {
-        event.preventDefault();
-        showMessage("accountMessage",
-          "Registration is not active yet. " +
-          "Secure authentication must be connected first.");
-      });
+  async function checkSession() {
+    try {
+      const result = await client.auth.getSession();
 
-    document.getElementById("loginForm")
-      .addEventListener("submit", function(event) {
-        event.preventDefault();
-        showMessage("accountMessage",
-          "Login is not active yet. " +
-          "Secure authentication must be connected first.");
-      });
+      if (result.error) {
+        throw result.error;
+      }
 
-    document.getElementById("giftForm")
-      .addEventListener("submit", function(event) {
-        event.preventDefault();
-        showMessage("giftMessage",
-          "Gift card trading is not active yet. " +
-          "Your information has not been submitted or stored.");
-      });
+      updateAccount(result.data.session?.user || null);
+    } catch (error) {
+      status.textContent = "Unable to check your account.";
+      showMessage(
+        "Please refresh the page and try again.",
+        "error"
+      );
+    }
+  }
 
-    document.getElementById("supportForm")
-      .addEventListener("submit", function(event) {
-        event.preventDefault();
-        showMessage("supportNotice",
-          "Customer support is not connected yet. " +
-          "Your message has not been sent or stored.");
-      });
-  </script>
+  client.auth.onAuthStateChange(function (_event, session) {
+    updateAccount(session?.user || null);
+  });
+
+  document
+    .getElementById("signupForm")
+    .addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const button = document.getElementById("signupButton");
+      const email = document
+        .getElementById("signupEmail").value.trim();
+      const password = document
+        .getElementById("signupPassword").value;
+
+      setBusy(button, true, "Sign Up");
+      showMessage("", "");
+
+      try {
+        const result = await client.auth.signUp({
+          email: email,
+          password: password
+        });
+
+        if (result.error) {
+          throw result.error;
+        }
+
+        if (result.data.session) {
+          showMessage(
+            "Your account was created successfully!",
+            "success"
+          );
+        } else {
+          showMessage(
+            "Registration received. Check your email for a confirmation link before logging in.",
+            "success"
+          );
+        }
+      } catch (error) {
+        showMessage(
+          error.message || "Registration failed. Please try again.",
+          "error"
+        );
+      } finally {
+        setBusy(button, false, "Sign Up");
+      }
+    });
+
+  document
+    .getElementById("loginForm")
+    .addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const button = document.getElementById("loginButton");
+      const email = document
+        .getElementById("loginEmail").value.trim();
+      const password = document
+        .getElementById("loginPassword").value;
+
+      setBusy(button, true, "Log In");
+      showMessage("", "");
+
+      try {
+        const result = await client.auth.signInWithPassword({
+          email: email,
+          password: password
+        });
+
+        if (result.error) {
+          throw result.error;
+        }
+
+        updateAccount(result.data.user);
+
+        showMessage("You are now logged in.", "success");
+      } catch (error) {
+        showMessage(
+          error.message || "Login failed. Please check your details.",
+          "error"
+        );
+      } finally {
+        setBusy(button, false, "Log In");
+      }
+    });
+
+  document
+    .getElementById("logoutButton")
+    .addEventListener("click", async function () {
+      const button = document.getElementById("logoutButton");
+
+      button.disabled = true;
+      showMessage("", "");
+
+      try {
+        const result = await client.auth.signOut();
+
+        if (result.error) {
+          throw result.error;
+        }
+
+        updateAccount(null);
+        showMessage("You have logged out.", "success");
+      } catch (error) {
+        showMessage(
+          error.message || "Logout failed. Please try again.",
+          "error"
+        );
+      } finally {
+        button.disabled = false;
+      }
+    });
+
+  checkSession();
+})();
+</script>
 
 </body>
-</html>
+  </html>
