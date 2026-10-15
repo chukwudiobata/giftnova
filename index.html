@@ -1,213 +1,1253 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#087f45"><title>GiftNova | Your Gift Card Hub</title>
-<style>:root {  --green: #087f45;  --green-dark: #056b39;  --green-light: #eaf8f0;  --white: #ffffff;  --background: #f6faf7;  --text: #17231c;  --muted: #68766d;  --border: #e0e9e3;}* { box-sizing: border-box; }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#087f45">
+<title>GiftNova | Your Gift Card Hub</title>
+
+<style>
+:root {
+  --green: #087f45;
+  --green-dark: #056b39;
+  --green-light: #eaf8f0;
+  --white: #ffffff;
+  --background: #f6faf7;
+  --text: #17231c;
+  --muted: #68766d;
+  --border: #e0e9e3;
+}
+* { box-sizing: border-box; }
+
 html { scroll-behavior: smooth; }
-body {  margin: 0;  font-family: Arial, Helvetica, sans-serif;  background: var(--background);  color: var(--text);  line-height: 1.6;}
-button, input, select, textarea {  font: inherit;}
-a {  color: inherit;  text-decoration: none;}
-.top-message {  background: var(--green-dark);  color: white;  padding: 8px 12px;  text-align: center;  font-size: 13px;}
-header {  background: white;  border-bottom: 1px solid var(--border);  position: sticky;  top: 0;  z-index: 10;}
-.header-inner {  max-width: 1150px;  margin: auto;  padding: 14px 22px;  display: flex;  align-items: center;  justify-content: space-between;  gap: 15px;}
-.logo {  display: flex;  align-items: center;  gap: 9px;  color: var(--green);  font-size: 25px;  font-weight: 800;}
-.logo-icon {  width: 42px;  height: 42px;  display: grid;  place-items: center;  background: var(--green);  border-radius: 13px;  color: white;  font-size: 24px;}
-nav {  display: flex;  align-items: center;  gap: 20px;  font-size: 14px;  font-weight: bold;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.top-message {
+  background: var(--green-dark);
+  color: white;
+  padding: 8px 12px;
+  text-align: center;
+  font-size: 13px;
+}
+
+header {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.header-inner {
+  max-width: 1150px;
+  margin: auto;
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--green);
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  background: var(--green);
+  border-radius: 13px;
+  color: white;
+  font-size: 24px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
 nav a:hover { color: var(--green); }
-.container {  max-width: 1150px;  padding: 25px 22px 45px;  margin: auto;}
-.button {  display: inline-block;  border: 0;  border-radius: 10px;  padding: 12px 17px;  background: var(--green);  color: white;  font-weight: bold;  text-align: center;  cursor: pointer;}
+
+.container {
+  max-width: 1150px;
+  padding: 25px 22px 45px;
+  margin: auto;
+}
+
+.button {
+  display: inline-block;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 17px;
+  background: var(--green);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
 .button:hover { background: var(--green-dark); }
-.button-light {  background: var(--green-light);  color: var(--green);}
-.button-outline {  background: white;  color: var(--green);  border: 1px solid #b8dec7;}
-.button:disabled {  opacity: .6;  cursor: not-allowed;}
-.hero {  display: grid;  grid-template-columns: 1fr 1fr;  gap: 30px;  align-items: center;  padding: 35px 0;}
-.badge {  display: inline-block;  background: var(--green-light);  color: var(--green);  padding: 7px 12px;  border-radius: 30px;  font-size: 13px;  font-weight: bold;}
-.hero h1 {  font-size: clamp(36px, 5vw, 56px);  line-height: 1.12;  letter-spacing: -1.5px;  margin: 18px 0;}
+
+.button-light {
+  background: var(--green-light);
+  color: var(--green);
+}
+
+.button-outline {
+  background: white;
+  color: var(--green);
+  border: 1px solid #b8dec7;
+}
+
+.button:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+  padding: 35px 0;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--green-light);
+  color: var(--green);
+  padding: 7px 12px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.hero h1 {
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+  margin: 18px 0;
+}
+
 .green-text { color: var(--green); }
-.hero p {  color: var(--muted);  font-size: 16px;}
-.hero-buttons {  display: flex;  flex-wrap: wrap;  gap: 10px;  margin: 22px 0;}
-.hero-picture {  min-height: 290px;  background: linear-gradient(140deg, #e0f7e9, #f8fcf9);  border: 1px solid #d6eddf;  border-radius: 25px;  display: grid;  place-items: center;  position: relative;  overflow: hidden;}
-.gift-illustration {  font-size: 115px;  filter: drop-shadow(0 15px 12px #087f4520);}
-.floating-note {  position: absolute;  background: white;  padding: 12px 15px;  border: 1px solid var(--border);  border-radius: 12px;  box-shadow: 0 8px 22px #00000008;  font-size: 13px;  font-weight: bold;}
-.note-one { left: 15px; bottom: 20px; }.note-two { right: 15px; top: 20px; }
-.section-heading {  margin: 32px 0 16px;  display: flex;  justify-content: space-between;  align-items: center;  gap: 12px;}
-.section-heading h2 {  font-size: 26px;  margin: 0;}
-.section-heading p {  color: var(--muted);  margin: 4px 0 0;  font-size: 14px;}
-.grid {  display: grid;  grid-template-columns: repeat(4, minmax(0, 1fr));  gap: 14px;}
-.panel, .gift-card {  background: white;  border: 1px solid var(--border);  border-radius: 16px;  padding: 20px;  box-shadow: 0 4px 15px #12351e05;}
-.gift-card:hover {  border-color: #9bd3af;  transform: translateY(-2px);}
+
+.hero p {
+  color: var(--muted);
+  font-size: 16px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 22px 0;
+}
+
+.hero-picture {
+  min-height: 290px;
+  background: linear-gradient(140deg, #e0f7e9, #f8fcf9);
+  border: 1px solid #d6eddf;
+  border-radius: 25px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.gift-illustration {
+  font-size: 115px;
+  filter: drop-shadow(0 15px 12px #087f4520);
+}
+
+.floating-note {
+  position: absolute;
+  background: white;
+  padding: 12px 15px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 8px 22px #00000008;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.note-one { left: 15px; bottom: 20px; }
+.note-two { right: 15px; top: 20px; }
+
+.section-heading {
+  margin: 32px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-heading h2 {
+  font-size: 26px;
+  margin: 0;
+}
+
+.section-heading p {
+  color: var(--muted);
+  margin: 4px 0 0;
+  font-size: 14px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.panel, .gift-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 15px #12351e05;
+}
+
+.gift-card:hover {
+  border-color: #9bd3af;
+  transform: translateY(-2px);
+}
+
 .gift-card { transition: .15s; }
-.gift-icon {  width: 48px;  height: 48px;  display: grid;  place-items: center;  background: var(--green-light);  border-radius: 13px;  font-size: 25px;  margin-bottom: 10px;}
+
+.gift-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  background: var(--green-light);
+  border-radius: 13px;
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
 .gift-card h3 { margin: 0 0 4px; font-size: 16px; }
-.gift-card p {  color: var(--muted);  margin: 0;  font-size: 13px;}
-.rate {  border-top: 1px solid var(--border);  margin-top: 12px;  padding-top: 10px;  color: var(--green);  font-size: 13px;  font-weight: bold;}
-.two-columns {  display: grid;  grid-template-columns: 1fr 1fr;  gap: 18px;}
+
+.gift-card p {
+  color: var(--muted);
+  margin: 0;
+  font-size: 13px;
+}
+
+.rate {
+  border-top: 1px solid var(--border);
+  margin-top: 12px;
+  padding-top: 10px;
+  color: var(--green);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
 .panel h2 { margin-top: 0; }
-.description {  font-size: 14px;  color: var(--muted);}
+
+.description {
+  font-size: 14px;
+  color: var(--muted);
+}
+
 .field { margin: 13px 0; }
-.field label {  display: block;  font-size: 13px;  font-weight: bold;  margin-bottom: 6px;}
-.field input, .field select, .field textarea {  display: block;  width: 100%;  padding: 12px;  border: 1px solid #d5e0d8;  border-radius: 9px;  background: white;  color: var(--text);}
-.field input:focus, .field select:focus, .field textarea:focus {  outline: 2px solid #b8e4c8;  border-color: var(--green);}
-.form-grid {  display: grid;  grid-template-columns: 1fr 1fr;  gap: 0 12px;}
-.notice {  background: #fff7df;  border: 1px solid #f0dfa9;  color: #735a12;  border-radius: 10px;  padding: 13px;  font-size: 13px;  margin: 15px 0;}
-.green-notice {  background: var(--green-light);  border: 1px solid #cfe9d8;  color: var(--green-dark);  border-radius: 10px;  padding: 13px;  font-size: 13px;  margin: 15px 0;}
-.balance-box {  background: linear-gradient(130deg, #087f45, #10a55c);  color: white;  padding: 22px;  border-radius: 16px;  margin: 15px 0;}
-.balance-box .amount {  font-size: 30px;  font-weight: 800;}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.field input, .field select, .field textarea {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d5e0d8;
+  border-radius: 9px;
+  background: white;
+  color: var(--text);
+}
+
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: 2px solid #b8e4c8;
+  border-color: var(--green);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 12px;
+}
+
+.notice {
+  background: #fff7df;
+  border: 1px solid #f0dfa9;
+  color: #735a12;
+  border-radius: 10px;
+  padding: 13px;
+  font-size: 13px;
+  margin: 15px 0;
+}
+
+.green-notice {
+  background: var(--green-light);
+  border: 1px solid #cfe9d8;
+  color: var(--green-dark);
+  border-radius: 10px;
+  padding: 13px;
+  font-size: 13px;
+  margin: 15px 0;
+}
+
+.balance-box {
+  background: linear-gradient(130deg, #087f45, #10a55c);
+  color: white;
+  padding: 22px;
+  border-radius: 16px;
+  margin: 15px 0;
+}
+
+.balance-box .amount {
+  font-size: 30px;
+  font-weight: 800;
+}
+
 .balance-box small { opacity: .9; }
+
 .hidden { display: none !important; }
-.tabs {  display: flex;  gap: 8px;  margin: 15px 0;}
-.tab {  width: auto;  border: 1px solid var(--border);  background: white;  color: var(--muted);  border-radius: 9px;  padding: 9px 14px;  cursor: pointer;  font-weight: bold;}
-.tab.active {  background: var(--green-light);  color: var(--green);  border-color: #b8dec7;}
-.message {  font-size: 14px;  overflow-wrap: anywhere;}
-.success { color: var(--green); }.error { color: #b42318; }.muted { color: var(--muted); }.small { font-size: 12px; }
-.history-row {  display: flex;  justify-content: space-between;  gap: 12px;  padding: 13px 0;  border-bottom: 1px solid var(--border);  font-size: 14px;}
-.history-empty {  text-align: center;  color: var(--muted);  padding: 22px 8px;  font-size: 14px;}
-.status {  display: inline-block;  background: #fff0c7;  color: #805c00;  border-radius: 30px;  padding: 5px 9px;  font-size: 11px;  font-weight: bold;}
-footer {  background: #073e27;  color: white;  padding: 28px 22px;}
-.footer-inner {  max-width: 1150px;  margin: auto;  display: flex;  justify-content: space-between;  gap: 20px;  flex-wrap: wrap;}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.tab {
+  width: auto;
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--muted);
+  border-radius: 9px;
+  padding: 9px 14px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tab.active {
+  background: var(--green-light);
+  color: var(--green);
+  border-color: #b8dec7;
+}
+
+.message {
+  font-size: 14px;
+  overflow-wrap: anywhere;
+}
+
+.success { color: var(--green); }
+.error { color: #b42318; }
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+
+.history-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+
+.history-empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 22px 8px;
+  font-size: 14px;
+}
+
+.status {
+  display: inline-block;
+  background: #fff0c7;
+  color: #805c00;
+  border-radius: 30px;
+  padding: 5px 9px;
+  font-size: 11px;
+  font-weight: bold;
+}
+
+footer {
+  background: #073e27;
+  color: white;
+  padding: 28px 22px;
+}
+
+.footer-inner {
+  max-width: 1150px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
 footer p { color: #c3e0ce; font-size: 13px; }
-@media (max-width: 850px) {  .hero { grid-template-columns: 1fr; }  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }  .two-columns { grid-template-columns: 1fr; }  nav { gap: 12px; }}
-@media (max-width: 520px) {  .header-inner { padding: 11px 13px; }  .logo { font-size: 21px; }  .logo-icon { width: 36px; height: 36px; }  nav { gap: 9px; font-size: 12px; }  nav a:nth-child(2), nav a:nth-child(4) { display: none; }  .header-inner > .button { padding: 9px 10px; font-size: 12px; }  .container { padding: 18px 13px 35px; }  .hero h1 { font-size: 38px; }  .hero-picture { min-height: 230px; }  .gift-illustration { font-size: 90px; }  .grid { gap: 9px; }  .gift-card { padding: 13px; }  .panel { padding: 15px; }  .form-grid { grid-template-columns: 1fr; }  .section-heading h2 { font-size: 23px; }}</style></head>
+
+@media (max-width: 850px) {
+  .hero { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .two-columns { grid-template-columns: 1fr; }
+  nav { gap: 12px; }
+}
+
+@media (max-width: 520px) {
+  .header-inner { padding: 11px 13px; }
+  .logo { font-size: 21px; }
+  .logo-icon { width: 36px; height: 36px; }
+  nav { gap: 9px; font-size: 12px; }
+  nav a:nth-child(2), nav a:nth-child(4) { display: none; }
+  .header-inner > .button { padding: 9px 10px; font-size: 12px; }
+  .container { padding: 18px 13px 35px; }
+  .hero h1 { font-size: 38px; }
+  .hero-picture { min-height: 230px; }
+  .gift-illustration { font-size: 90px; }
+  .grid { gap: 9px; }
+  .gift-card { padding: 13px; }
+  .panel { padding: 15px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .section-heading h2 { font-size: 23px; }
+}
+</style>
+</head>
+
 <body>
-<div class="top-message">  Welcome to GiftNova — your gift-card hub</div>
-<header>  <div class="header-inner">    <a class="logo" href="#home">      <span class="logo-icon"> </span>      <span>GiftNova</span>    </a>
-    <nav>      <a href="#home">Home</a>      <a href="#cards">Gift cards</a>      <a href="#sell">Sell</a>      <a href="#account">Account</a>      <a href="#support">Support</a>    </nav>
-    <a class="button" href="#account">Get started</a>  </div></header>
+
+<div class="top-message">
+  Welcome to GiftNova — your gift-card hub
+</div>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#home">
+      <span class="logo-icon">🎁</span>
+      <span>GiftNova</span>
+    </a>
+
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#cards">Gift cards</a>
+      <a href="#sell">Sell</a>
+      <a href="#account">Account</a>
+      <a href="#support">Support</a>
+    </nav>
+
+    <a class="button" href="#account">Get started</a>
+  </div>
+</header>
+
 <main class="container">
-  <!-- HOMEPAGE -->
-  <section class="hero" id="home">    <div>      <span class="badge">✦ WELCOME TO GIFTNOVA</span>
-      <h1>        Your gift cards.<br>        <span class="green-text">Your next move.</span>      </h1>
-      <p>        Explore gift-card categories, check published rates,        and manage your GiftNova account from one simple dashboard.      </p>
-      <div class="hero-buttons">        <a class="button" href="#cards">Explore gift cards →</a>        <a class="button button-light" href="#sell">Sell a card</a>      </div>
-      <p class="small">        Create your customer account to prepare for the GiftNova launch.      </p>    </div>
-    <div class="hero-picture">      <div class="gift-illustration"> </div>      <div class="floating-note note-one">        ✓ Simple dashboard      </div>      <div class="floating-note note-two">        GiftNova      </div>    </div>  </section>
-  <!-- GIFT CARD CATEGORIES -->
-  <section id="cards">    <div class="section-heading">      <div>        <h2>Gift-card categories</h2>        <p>Explore the categories planned for GiftNova.</p>      </div>      <span class="status">Rates pending setup</span>    </div>
-    <div class="grid">
-      <article class="gift-card">        <div class="gift-icon"> </div>        <h3>Apple</h3>        <p>Digital and physical cards</p>        <div class="rate">Rate not published</div>      </article>
-      <article class="gift-card">        <div class="gift-icon"> </div>        <h3>Amazon</h3>        <p>Shopping gift cards</p>        <div class="rate">Rate not published</div>      </article>
-      <article class="gift-card">        <div class="gift-icon"> </div>        <h3>Google Play</h3>        <p>Apps and entertainment</p>        <div class="rate">Rate not published</div>      </article>
-      <article class="gift-card">        <div class="gift-icon"> </div>        <h3>Steam</h3>        <p>Gaming gift cards</p>        <div class="rate">Rate not published</div>      </article>
-      <article class="gift-card">        <div class="gift-icon"> </div>        <h3>PlayStation</h3>        <p>Gaming and entertainment</p>        <div class="rate">Rate not published</div>      </article>
-      <article class="gift-card">        <div class="gift-icon"> </div>        <h3>Razer Gold</h3>        <p>Gaming credit</p>        <div class="rate">Rate not published</div>      </article>
-      <article class="gift-card">        <div class="gift-icon"> </div>        <h3>American Express</h3>        <p>Prepaid gift cards</p>        <div class="rate">Rate not published</div>      </article>
-      <article class="gift-card">        <div class="gift-icon"> </div>        <h3>Retail cards</h3>        <p>Selected shopping brands</p>        <div class="rate">Rate not published</div>      </article>
-    </div>  </section>
-  <!-- CUSTOMER ACCOUNT -->
-  <section id="account">    <div class="section-heading">      <div>        <h2>Your GiftNova account</h2>        <p>Sign up or log in to access your customer area.</p>      </div>    </div>
-    <div class="two-columns">
-      <section class="panel">
-        <div id="authForms">          <h2>Welcome back</h2>          <p class="description">            Create an account or log in securely.          </p>
-          <div class="tabs">            <button class="tab active" id="showLogin" type="button">              Log in            </button>            <button class="tab" id="showSignup" type="button">              Sign up            </button>          </div>
-          <form id="loginForm">            <div class="field">              <label for="loginEmail">Email address</label>              <input                id="loginEmail"                type="email"                autocomplete="email"                placeholder="you@example.com"                required              >            </div>
-            <div class="field">              <label for="loginPassword">Password</label>              <input                id="loginPassword"                type="password"                autocomplete="current-password"                placeholder="Enter your password"                required              >            </div>
-            <button class="button" id="loginButton" type="submit"                    style="width:100%">              Log in            </button>          </form>
-          <form id="signupForm" class="hidden">            <div class="field">              <label for="signupEmail">Email address</label>              <input                id="signupEmail"                type="email"                autocomplete="email"                placeholder="you@example.com"                required              >            </div>
-            <div class="field">              <label for="signupPassword">Create password</label>              <input                id="signupPassword"                type="password"                autocomplete="new-password"                minlength="8"                placeholder="At least 8 characters"                required              >            </div>
-            <button class="button" id="signupButton" type="submit"                    style="width:100%">              Create account            </button>
-            <p class="small muted">              Use a unique password that you do not use on other websites.            </p>          </form>
-          <p id="authMessage" class="message" aria-live="polite"></p>        </div>
-        <div id="accountArea" class="hidden">          <h2>Your dashboard</h2>          <p class="description">You are signed in to GiftNova.</p>
-          <div class="balance-box">            <div>Available balance</div>            <div class="amount">₦0.00</div>            <small>              Real balances will be connected after secure backend setup.            </small>          </div>
-          <p>            Signed in as:            <strong id="customerEmail"></strong>          </p>
-          <button class="button button-outline" id="logoutButton"                  type="button">            Log out          </button>
-          <p class="small muted">            This balance is a display placeholder, not money held by GiftNova.          </p>        </div>
-        <p id="authStatus" class="small muted" aria-live="polite">          Connecting to account service…        </p>      </section>
-      <!-- TRANSACTION HISTORY -->
-      <section class="panel">        <h2>Transaction history</h2>        <p class="description">          Your transaction history will appear here after the secure database          is configured.        </p>
-        <div class="history-row">          <span>Gift-card submissions</span>          <strong>Not connected</strong>        </div>
-        <div class="history-row">          <span>Approved trades</span>          <strong>Not connected</strong>        </div>
-        <div class="history-row">          <span>Payout history</span>          <strong>Not connected</strong>        </div>
-        <div class="history-empty">          <br>          <strong>No transactions to show</strong>          <br>          History will be available after backend setup.        </div>      </section>
-    </div>  </section>
-  <!-- SELL GIFT CARD -->
-  <section id="sell">    <div class="section-heading">      <div>        <h2>Sell a gift card</h2>        <p>Prepare the details for a future secure submission.</p>      </div>      <span class="status">Coming soon</span>    </div>
-    <div class="two-columns">
-      <section class="panel">        <h2>Card information</h2>
-        <p class="description">          This form is a preview. It does not submit or store card details.        </p>
-        <form id="sellForm">
-          <div class="form-grid">
-            <div class="field">              <label for="brand">Gift-card brand</label>              <select id="brand" required>                <option value="">Select brand</option>                <option>Apple</option>                <option>Amazon</option>                <option>Google Play</option>                <option>Steam</option>                <option>PlayStation</option>                <option>Razer Gold</option>                <option>American Express</option>                <option>Other</option>              </select>            </div>
-            <div class="field">              <label for="currency">Card currency</label>              <select id="currency" required>                <option value="">Select currency</option>                <option>USD</option>                <option>GBP</option>                <option>EUR</option>                <option>CAD</option>                <option>AUD</option>                <option>NGN</option>              </select>            </div>
-            <div class="field">              <label for="cardType">Card type</label>              <select id="cardType" required>                <option value="">Select type</option>                <option>Physical card</option>                <option>Digital card</option>              </select>            </div>
-            <div class="field">              <label for="cardValue">Card value</label>              <input id="cardValue" type="number" min="1" step="0.01"                     placeholder="e.g. 100" required>            </div>
-            <div class="field">              <label for="quantity">Quantity</label>              <input id="quantity" type="number" min="1" max="20"                     value="1" required>            </div>
-            <div class="field">              <label for="cardImage">Card image (preview only)</label>              <input id="cardImage" type="file" accept="image/*">            </div>
-          </div>
-          <div class="green-notice">            <strong>Estimated price:</strong>            <div id="estimate">Not available yet</div>            A verified rate must be configured before an estimate can be shown.          </div>
-          <div class="notice">            Do not enter gift-card PINs, redemption codes, or full card            numbers. Secure uploads and server-side review must be configured            before this service can accept submissions.          </div>
-          <button class="button" type="submit" style="width:100%">            Submissions not yet available          </button>
-          <p id="sellMessage" class="message" aria-live="polite"></p>        </form>      </section>
-      <section class="panel">        <h2>How GiftNova will work</h2>
-        <div class="history-row">          <span>            <strong>1. Create your account</strong><br>            <span class="muted small">Sign up and confirm your email.</span>          </span>          <span>✓</span>        </div>
-        <div class="history-row">          <span>            <strong>2. Check the rate</strong><br>            <span class="muted small">Verified rates will be published.</span>          </span>          <span>—</span>        </div>
-        <div class="history-row">          <span>            <strong>3. Submit for review</strong><br>            <span class="muted small">A secure review system is required.</span>          </span>          <span>—</span>        </div>
-        <div class="history-row">          <span>            <strong>4. Track your status</strong><br>            <span class="muted small">View review and payout updates.</span>          </span>          <span>—</span>        </div>
-        <div class="notice">          Real trading and payouts must stay disabled until database security,          administrator permissions, and payment handling are tested.        </div>      </section>
-    </div>  </section>
-  <!-- CUSTOMER SUPPORT -->
-  <section id="support">    <div class="section-heading">      <div>        <h2>Customer support</h2>        <p>Help and complaints for GiftNova customers.</p>      </div>    </div>
-    <div class="two-columns">
-      <section class="panel">        <h2>Contact support</h2>        <p class="description">          The support form is a preview and does not send messages yet.        </p>
-        <form id="supportForm">          <div class="field">            <label for="supportEmail">Your email</label>            <input id="supportEmail" type="email" required                   placeholder="you@example.com">          </div>
-          <div class="field">            <label for="supportTopic">Topic</label>            <select id="supportTopic" required>              <option value="">Choose a topic</option>              <option>Account access</option>              <option>Gift-card submission</option>              <option>Transaction status</option>              <option>Complaint</option>              <option>Other</option>            </select>          </div>
-          <div class="field">            <label for="supportDetails">Message</label>            <textarea id="supportDetails" rows="4" maxlength="1500"                      required placeholder="How can we help?"></textarea>          </div>
-          <button class="button" type="submit">            Support service coming soon          </button>
-          <p id="supportMessage" class="message" aria-live="polite"></p>        </form>      </section>
-      <section class="panel">        <h2>Admin dashboard</h2>        <p class="description">          Administrator features will be connected through secure backend          permissions.        </p>
-        <div class="history-row">          <span>Review card submissions</span>          <strong>Not enabled</strong>        </div>
-        <div class="history-row">          <span>Manage gift-card rates</span>          <strong>Not enabled</strong>        </div>
-        <div class="history-row">          <span>Review transactions</span>          <strong>Not enabled</strong>        </div>
-        <div class="history-row">          <span>Review complaints</span>          <strong>Not enabled</strong>        </div>
-        <div class="notice">          Admin permissions must be enforced by the backend, not just hidden          in the website's visual design.        </div>      </section>
-    </div>  </section>
+
+  <!-- HOMEPAGE -->
+
+  <section class="hero" id="home">
+    <div>
+      <span class="badge">✦ WELCOME TO GIFTNOVA</span>
+
+      <h1>
+        Your gift cards.<br>
+        <span class="green-text">Your next move.</span>
+      </h1>
+
+      <p>
+        Explore gift-card categories, check published rates,
+        and manage your GiftNova account from one simple dashboard.
+      </p>
+
+      <div class="hero-buttons">
+        <a class="button" href="#cards">Explore gift cards →</a>
+        <a class="button button-light" href="#sell">Sell a card</a>
+      </div>
+
+      <p class="small">
+        Create your customer account to prepare for the GiftNova launch.
+      </p>
+    </div>
+
+    <div class="hero-picture">
+      <div class="gift-illustration">🎁</div>
+      <div class="floating-note note-one">
+        ✓ Simple dashboard
+      </div>
+      <div class="floating-note note-two">
+        💚 GiftNova
+      </div>
+    </div>
+  </section>
+
+  <!-- GIFT CARD CATEGORIES -->
+
+  <section id="cards">
+    <div class="section-heading">
+      <div>
+        <h2>Gift-card categories</h2>
+        <p>Explore the categories planned for GiftNova.</p>
+      </div>
+      <span class="status">Rates pending setup</span>
+    </div>
+
+    <div class="grid">
+
+      <article class="gift-card">
+        <div class="gift-icon">🍎</div>
+        <h3>Apple</h3>
+        <p>Digital and physical cards</p>
+        <div class="rate">Rate not published</div>
+      </article>
+
+      <article class="gift-card">
+        <div class="gift-icon">📦</div>
+        <h3>Amazon</h3>
+        <p>Shopping gift cards</p>
+        <div class="rate">Rate not published</div>
+      </article>
+
+      <article class="gift-card">
+        <div class="gift-icon">▶️</div>
+        <h3>Google Play</h3>
+        <p>Apps and entertainment</p>
+        <div class="rate">Rate not published</div>
+      </article>
+
+      <article class="gift-card">
+        <div class="gift-icon">🎮</div>
+        <h3>Steam</h3>
+        <p>Gaming gift cards</p>
+        <div class="rate">Rate not published</div>
+      </article>
+
+      <article class="gift-card">
+        <div class="gift-icon">🎮</div>
+        <h3>PlayStation</h3>
+        <p>Gaming and entertainment</p>
+        <div class="rate">Rate not published</div>
+      </article>
+
+      <article class="gift-card">
+        <div class="gift-icon">✨</div>
+        <h3>Razer Gold</h3>
+        <p>Gaming credit</p>
+        <div class="rate">Rate not published</div>
+      </article>
+
+      <article class="gift-card">
+        <div class="gift-icon">💳</div>
+        <h3>American Express</h3>
+        <p>Prepaid gift cards</p>
+        <div class="rate">Rate not published</div>
+      </article>
+
+      <article class="gift-card">
+        <div class="gift-icon">🛍️</div>
+        <h3>Retail cards</h3>
+        <p>Selected shopping brands</p>
+        <div class="rate">Rate not published</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- CUSTOMER ACCOUNT -->
+
+  <section id="account">
+    <div class="section-heading">
+      <div>
+        <h2>Your GiftNova account</h2>
+        <p>Sign up or log in to access your customer area.</p>
+      </div>
+    </div>
+
+    <div class="two-columns">
+
+      <section class="panel">
+
+        <div id="authForms">
+          <h2>Welcome back</h2>
+          <p class="description">
+            Create an account or log in securely.
+          </p>
+
+          <div class="tabs">
+            <button class="tab active" id="showLogin" type="button">
+              Log in
+            </button>
+            <button class="tab" id="showSignup" type="button">
+              Sign up
+            </button>
+          </div>
+
+          <form id="loginForm">
+            <div class="field">
+              <label for="loginEmail">Email address</label>
+              <input
+                id="loginEmail"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label for="loginPassword">Password</label>
+              <input
+                id="loginPassword"
+                type="password"
+                autocomplete="current-password"
+                placeholder="Enter your password"
+                required
+              >
+            </div>
+
+            <button class="button" id="loginButton" type="submit"
+                    style="width:100%">
+              Log in
+            </button>
+          </form>
+
+          <form id="signupForm" class="hidden">
+            <div class="field">
+              <label for="signupEmail">Email address</label>
+              <input
+                id="signupEmail"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              >
+            </div>
+
+            <div class="field">
+              <label for="signupPassword">Create password</label>
+              <input
+                id="signupPassword"
+                type="password"
+                autocomplete="new-password"
+                minlength="8"
+                placeholder="At least 8 characters"
+                required
+              >
+            </div>
+
+            <button class="button" id="signupButton" type="submit"
+                    style="width:100%">
+              Create account
+            </button>
+
+            <p class="small muted">
+              Use a unique password that you do not use on other websites.
+            </p>
+          </form>
+
+          <p id="authMessage" class="message" aria-live="polite"></p>
+        </div>
+
+        <div id="accountArea" class="hidden">
+          <h2>Your dashboard</h2>
+          <p class="description">You are signed in to GiftNova.</p>
+
+          <div class="balance-box">
+            <div>Available balance</div>
+            <div class="amount">₦0.00</div>
+            <small>
+              Real balances will be connected after secure backend setup.
+            </small>
+          </div>
+
+          <p>
+            Signed in as:
+            <strong id="customerEmail"></strong>
+          </p>
+
+          <button class="button button-outline" id="logoutButton"
+                  type="button">
+            Log out
+          </button>
+
+          <p class="small muted">
+            This balance is a display placeholder, not money held by GiftNova.
+          </p>
+        </div>
+
+        <p id="authStatus" class="small muted" aria-live="polite">
+          Connecting to account service…
+        </p>
+      </section>
+
+      <!-- TRANSACTION HISTORY -->
+
+      <section class="panel">
+        <h2>Transaction history</h2>
+        <p class="description">
+          Your transaction history will appear here after the secure database
+          is configured.
+        </p>
+
+        <div class="history-row">
+          <span>Gift-card submissions</span>
+          <strong>Not connected</strong>
+        </div>
+
+        <div class="history-row">
+          <span>Approved trades</span>
+          <strong>Not connected</strong>
+        </div>
+
+        <div class="history-row">
+          <span>Payout history</span>
+          <strong>Not connected</strong>
+        </div>
+
+        <div class="history-empty">
+          📄<br>
+          <strong>No transactions to show</strong>
+          <br>
+          History will be available after backend setup.
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <!-- SELL GIFT CARD -->
+
+  <section id="sell">
+    <div class="section-heading">
+      <div>
+        <h2>Sell a gift card</h2>
+        <p>Prepare the details for a future secure submission.</p>
+      </div>
+      <span class="status">Coming soon</span>
+    </div>
+
+    <div class="two-columns">
+
+      <section class="panel">
+        <h2>Card information</h2>
+
+        <p class="description">
+          This form is a preview. It does not submit or store card details.
+        </p>
+
+        <form id="sellForm">
+
+          <div class="form-grid">
+
+            <div class="field">
+              <label for="brand">Gift-card brand</label>
+              <select id="brand" required>
+                <option value="">Select brand</option>
+                <option>Apple</option>
+                <option>Amazon</option>
+                <option>Google Play</option>
+                <option>Steam</option>
+                <option>PlayStation</option>
+                <option>Razer Gold</option>
+                <option>American Express</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="currency">Card currency</label>
+              <select id="currency" required>
+                <option value="">Select currency</option>
+                <option>USD</option>
+                <option>GBP</option>
+                <option>EUR</option>
+                <option>CAD</option>
+                <option>AUD</option>
+                <option>NGN</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="cardType">Card type</label>
+              <select id="cardType" required>
+                <option value="">Select type</option>
+                <option>Physical card</option>
+                <option>Digital card</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="cardValue">Card value</label>
+              <input id="cardValue" type="number" min="1" step="0.01"
+                     placeholder="e.g. 100" required>
+            </div>
+
+            <div class="field">
+              <label for="quantity">Quantity</label>
+              <input id="quantity" type="number" min="1" max="20"
+                     value="1" required>
+            </div>
+
+            <div class="field">
+              <label for="cardImage">Card image (preview only)</label>
+              <input id="cardImage" type="file" accept="image/*">
+            </div>
+
+          </div>
+
+          <div class="green-notice">
+            <strong>Estimated price:</strong>
+            <div id="estimate">Not available yet</div>
+            A verified rate must be configured before an estimate can be shown.
+          </div>
+
+          <div class="notice">
+            Do not enter gift-card PINs, redemption codes, or full card
+            numbers. Secure uploads and server-side review must be configured
+            before this service can accept submissions.
+          </div>
+
+          <button class="button" type="submit" style="width:100%">
+            Submissions not yet available
+          </button>
+
+          <p id="sellMessage" class="message" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>How GiftNova will work</h2>
+
+        <div class="history-row">
+          <span>
+            <strong>1. Create your account</strong><br>
+            <span class="muted small">Sign up and confirm your email.</span>
+          </span>
+          <span>✓</span>
+        </div>
+
+        <div class="history-row">
+          <span>
+            <strong>2. Check the rate</strong><br>
+            <span class="muted small">Verified rates will be published.</span>
+          </span>
+          <span>—</span>
+        </div>
+
+        <div class="history-row">
+          <span>
+            <strong>3. Submit for review</strong><br>
+            <span class="muted small">A secure review system is required.</span>
+          </span>
+          <span>—</span>
+        </div>
+
+        <div class="history-row">
+          <span>
+            <strong>4. Track your status</strong><br>
+            <span class="muted small">View review and payout updates.</span>
+          </span>
+          <span>—</span>
+        </div>
+
+        <div class="notice">
+          Real trading and payouts must stay disabled until database security,
+          administrator permissions, and payment handling are tested.
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <!-- CUSTOMER SUPPORT -->
+
+  <section id="support">
+    <div class="section-heading">
+      <div>
+        <h2>Customer support</h2>
+        <p>Help and complaints for GiftNova customers.</p>
+      </div>
+    </div>
+
+    <div class="two-columns">
+
+      <section class="panel">
+        <h2>Contact support</h2>
+        <p class="description">
+          The support form is a preview and does not send messages yet.
+        </p>
+
+        <form id="supportForm">
+          <div class="field">
+            <label for="supportEmail">Your email</label>
+            <input id="supportEmail" type="email" required
+                   placeholder="you@example.com">
+          </div>
+
+          <div class="field">
+            <label for="supportTopic">Topic</label>
+            <select id="supportTopic" required>
+              <option value="">Choose a topic</option>
+              <option>Account access</option>
+              <option>Gift-card submission</option>
+              <option>Transaction status</option>
+              <option>Complaint</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="supportDetails">Message</label>
+            <textarea id="supportDetails" rows="4" maxlength="1500"
+                      required placeholder="How can we help?"></textarea>
+          </div>
+
+          <button class="button" type="submit">
+            Support service coming soon
+          </button>
+
+          <p id="supportMessage" class="message" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="panel">
+        <h2>Admin dashboard</h2>
+        <p class="description">
+          Administrator features will be connected through secure backend
+          permissions.
+        </p>
+
+        <div class="history-row">
+          <span>Review card submissions</span>
+          <strong>Not enabled</strong>
+        </div>
+
+        <div class="history-row">
+          <span>Manage gift-card rates</span>
+          <strong>Not enabled</strong>
+        </div>
+
+        <div class="history-row">
+          <span>Review transactions</span>
+          <strong>Not enabled</strong>
+        </div>
+
+        <div class="history-row">
+          <span>Review complaints</span>
+          <strong>Not enabled</strong>
+        </div>
+
+        <div class="notice">
+          Admin permissions must be enforced by the backend, not just hidden
+          in the website's visual design.
+        </div>
+      </section>
+
+    </div>
+  </section>
+
 </main>
-<footer>  <div class="footer-inner">    <div>      <div class="logo" style="color:white">        <span class="logo-icon"> </span>        <span>GiftNova</span>      </div>      <p>Your gift-card hub.</p>    </div>
-    <div>      <strong>Explore GiftNova</strong>      <p>        <a href="#cards">Gift cards</a> ·        <a href="#sell">Sell a card</a> ·        <a href="#support">Support</a>      </p>      <p>© 2026 GiftNova. All rights reserved.</p>    </div>  </div></footer>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="logo" style="color:white">
+        <span class="logo-icon">🎁</span>
+        <span>GiftNova</span>
+      </div>
+      <p>Your gift-card hub.</p>
+    </div>
+
+    <div>
+      <strong>Explore GiftNova</strong>
+      <p>
+        <a href="#cards">Gift cards</a> ·
+        <a href="#sell">Sell a card</a> ·
+        <a href="#support">Support</a>
+      </p>
+      <p>© 2026 GiftNova. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
 <!-- EXISTING SUPABASE ACCOUNT CONNECTION -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>(function () {  "use strict";
-  /*    These connection settings are retained from your existing website.    Never put a Supabase service-role secret in this file.  */
-  const SUPABASE_URL =    "https://qwovyidwvvqmgetoyzwe.supabase.co";
-  const SUPABASE_PUBLISHABLE_KEY =    "sb_publishable_JQ8gJtHVrVN1u6wsaEGwBg_CPZ6RKBf";
-  const byId = function (id) {    return document.getElementById(id);  };
-  const authForms = byId("authForms");  const accountArea = byId("accountArea");  const authStatus = byId("authStatus");  const authMessage = byId("authMessage");
-  function showMessage(element, text, type) {    element.textContent = text;    element.className = "message " + (type || "");  }
-  function setBusy(button, busy, label) {    button.disabled = busy;    button.textContent = busy ? "Please wait..." : label;  }
-  byId("showLogin").addEventListener("click", function () {    byId("loginForm").classList.remove("hidden");    byId("signupForm").classList.add("hidden");    byId("showLogin").classList.add("active");    byId("showSignup").classList.remove("active");    showMessage(authMessage, "", "");  });
-  byId("showSignup").addEventListener("click", function () {    byId("signupForm").classList.remove("hidden");    byId("loginForm").classList.add("hidden");    byId("showSignup").classList.add("active");    byId("showLogin").classList.remove("active");    showMessage(authMessage, "", "");  });
-  /*    These two forms are deliberately previews. They do not transmit    card details or support messages until secure backend services exist.  */
-  byId("sellForm").addEventListener("submit", function (event) {    event.preventDefault();
-    showMessage(      byId("sellMessage"),      "Gift-card submissions are not active yet. Nothing was sent or saved.",      "error"    );  });
-  byId("supportForm").addEventListener("submit", function (event) {    event.preventDefault();
-    showMessage(      byId("supportMessage"),      "Support messaging is not connected yet. Nothing was sent or saved.",      "error"    );  });
-  if (!window.supabase) {    authStatus.textContent = "Unable to load the account service.";
-    showMessage(      authMessage,      "Refresh the page and try again.",      "error"    );
-    return;  }
-  const client = window.supabase.createClient(    SUPABASE_URL,    SUPABASE_PUBLISHABLE_KEY  );
-  window.giftNovaSupabase = client;
-  function updateAccount(user) {    const loggedIn = Boolean(user);
-    authForms.classList.toggle("hidden", loggedIn);    accountArea.classList.toggle("hidden", !loggedIn);
-    authStatus.textContent = loggedIn      ? "You are signed in."      : "Please sign up or log in to access your customer account.";
-    byId("customerEmail").textContent =      loggedIn && user.email ? user.email : "";  }
-  client.auth.onAuthStateChange(function (_event, session) {    updateAccount(session && session.user ? session.user : null);  });
-  byId("signupForm").addEventListener("submit", async function (event) {    event.preventDefault();
-    const button = byId("signupButton");    const email = byId("signupEmail").value.trim();    const password = byId("signupPassword").value;
-    setBusy(button, true, "Create account");    showMessage(authMessage, "", "");
-    try {      const result = await client.auth.signUp({        email: email,        password: password      });
-      if (result.error) {        throw result.error;      }
-      if (result.data.session) {        showMessage(          authMessage,          "Your account was created successfully.",          "success"        );      } else {        showMessage(          authMessage,          "Registration received. Check your email for a confirmation link before logging in.",          "success"        );      }    } catch (error) {      showMessage(        authMessage,        error.message || "Registration failed. Please try again.",        "error"      );    } finally {      setBusy(button, false, "Create account");    }  });
-  byId("loginForm").addEventListener("submit", async function (event) {    event.preventDefault();
-    const button = byId("loginButton");    const email = byId("loginEmail").value.trim();    const password = byId("loginPassword").value;
-    setBusy(button, true, "Log in");    showMessage(authMessage, "", "");
-    try {      const result = await client.auth.signInWithPassword({        email: email,        password: password      });
-      if (result.error) {        throw result.error;      }
-      updateAccount(result.data.user);
-      showMessage(        authMessage,        "You are now logged in.",        "success"      );    } catch (error) {      showMessage(        authMessage,        error.message || "Login failed. Check your details and try again.",        "error"      );    } finally {      setBusy(button, false, "Log in");    }  });
-  byId("logoutButton").addEventListener("click", async function () {    const button = byId("logoutButton");
-    button.disabled = true;
-    try {      const result = await client.auth.signOut();
-      if (result.error) {        throw result.error;      }
-      updateAccount(null);
-      showMessage(        authMessage,        "You have logged out.",        "success"      );    } catch (error) {      showMessage(        authMessage,        error.message || "Logout failed. Please try again.",        "error"      );    } finally {      button.disabled = false;    }  });
-  client.auth.getSession()    .then(function (result) {      if (result.error) {        throw result.error;      }
-      updateAccount(        result.data.session ? result.data.session.user : null      );    })    .catch(function () {      authStatus.textContent =        "Unable to check your session. Refresh the page and try again.";    });
-})();</script>
-</body></html>
+
+<script>
+(function () {
+  "use strict";
+
+  /*
+    These connection settings are retained from your existing website.
+    Never put a Supabase service-role secret in this file.
+  */
+
+  const SUPABASE_URL =
+    "https://qwovyidwvvqmgetoyzwe.supabase.co";
+
+  const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_JQ8gJtHVrVN1u6wsaEGwBg_CPZ6RKBf";
+
+  const byId = function (id) {
+    return document.getElementById(id);
+  };
+
+  const authForms = byId("authForms");
+  const accountArea = byId("accountArea");
+  const authStatus = byId("authStatus");
+  const authMessage = byId("authMessage");
+
+  function showMessage(element, text, type) {
+    element.textContent = text;
+    element.className = "message " + (type || "");
+  }
+
+  function setBusy(button, busy, label) {
+    button.disabled = busy;
+    button.textContent = busy ? "Please wait..." : label;
+  }
+
+  byId("showLogin").addEventListener("click", function () {
+    byId("loginForm").classList.remove("hidden");
+    byId("signupForm").classList.add("hidden");
+    byId("showLogin").classList.add("active");
+    byId("showSignup").classList.remove("active");
+    showMessage(authMessage, "", "");
+  });
+
+  byId("showSignup").addEventListener("click", function () {
+    byId("signupForm").classList.remove("hidden");
+    byId("loginForm").classList.add("hidden");
+    byId("showSignup").classList.add("active");
+    byId("showLogin").classList.remove("active");
+    showMessage(authMessage, "", "");
+  });
+
+  /*
+    These two forms are deliberately previews. They do not transmit
+    card details or support messages until secure backend services exist.
+  */
+
+  byId("sellForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    showMessage(
+      byId("sellMessage"),
+      "Gift-card submissions are not active yet. Nothing was sent or saved.",
+      "error"
+    );
+  });
+
+  byId("supportForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    showMessage(
+      byId("supportMessage"),
+      "Support messaging is not connected yet. Nothing was sent or saved.",
+      "error"
+    );
+  });
+
+  if (!window.supabase) {
+    authStatus.textContent = "Unable to load the account service.";
+
+    showMessage(
+      authMessage,
+      "Refresh the page and try again.",
+      "error"
+    );
+
+    return;
+  }
+
+  const client = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+  window.giftNovaSupabase = client;
+
+  function updateAccount(user) {
+    const loggedIn = Boolean(user);
+
+    authForms.classList.toggle("hidden", loggedIn);
+    accountArea.classList.toggle("hidden", !loggedIn);
+
+    authStatus.textContent = loggedIn
+      ? "You are signed in."
+      : "Please sign up or log in to access your customer account.";
+
+    byId("customerEmail").textContent =
+      loggedIn && user.email ? user.email : "";
+  }
+
+  client.auth.onAuthStateChange(function (_event, session) {
+    updateAccount(session && session.user ? session.user : null);
+  });
+
+  byId("signupForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const button = byId("signupButton");
+    const email = byId("signupEmail").value.trim();
+    const password = byId("signupPassword").value;
+
+    setBusy(button, true, "Create account");
+    showMessage(authMessage, "", "");
+
+    try {
+      const result = await client.auth.signUp({
+        email: email,
+        password: password
+      });
+
+      if (result.error) {
+        throw result.error;
+      }
+
+      if (result.data.session) {
+        showMessage(
+          authMessage,
+          "Your account was created successfully.",
+          "success"
+        );
+      } else {
+        showMessage(
+          authMessage,
+          "Registration received. Check your email for a confirmation link before logging in.",
+          "success"
+        );
+      }
+    } catch (error) {
+      showMessage(
+        authMessage,
+        error.message || "Registration failed. Please try again.",
+        "error"
+      );
+    } finally {
+      setBusy(button, false, "Create account");
+    }
+  });
+
+  byId("loginForm").addEventListener("submit", async function (event) {
+    event.preventDefault();
+
+    const button = byId("loginButton");
+    const email = byId("loginEmail").value.trim();
+    const password = byId("loginPassword").value;
+
+    setBusy(button, true, "Log in");
+    showMessage(authMessage, "", "");
+
+    try {
+      const result = await client.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+
+      if (result.error) {
+        throw result.error;
+      }
+
+      updateAccount(result.data.user);
+
+      showMessage(
+        authMessage,
+        "You are now logged in.",
+        "success"
+      );
+    } catch (error) {
+      showMessage(
+        authMessage,
+        error.message || "Login failed. Check your details and try again.",
+        "error"
+      );
+    } finally {
+      setBusy(button, false, "Log in");
+    }
+  });
+
+  byId("logoutButton").addEventListener("click", async function () {
+    const button = byId("logoutButton");
+
+    button.disabled = true;
+
+    try {
+      const result = await client.auth.signOut();
+
+      if (result.error) {
+        throw result.error;
+      }
+
+      updateAccount(null);
+
+      showMessage(
+        authMessage,
+        "You have logged out.",
+        "success"
+      );
+    } catch (error) {
+      showMessage(
+        authMessage,
+        error.message || "Logout failed. Please try again.",
+        "error"
+      );
+    } finally {
+      button.disabled = false;
+    }
+  });
+
+  client.auth.getSession()
+    .then(function (result) {
+      if (result.error) {
+        throw result.error;
+      }
+
+      updateAccount(
+        result.data.session ? result.data.session.user : null
+      );
+    })
+    .catch(function () {
+      authStatus.textContent =
+        "Unable to check your session. Refresh the page and try again.";
+    });
+
+})();
+</script>
+
+</body>
+</html>
