@@ -1,1306 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#087f45">
-<title>GiftNova | Your Gift Card Hub</title>
-
-<style>
-:root {
-  --green: #087f45;
-  --green-dark: #056b39;
-  --green-light: #eaf8f0;
-  --white: #ffffff;
-  --background: #f6faf7;
-  --text: #17231c;
-  --muted: #68766d;
-  --border: #e0e9e3;
-}
-* { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--background);
-  color: var(--text);
-  line-height: 1.6;
-}
-
-button, input, select, textarea {
-  font: inherit;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.top-message {
-  background: var(--green-dark);
-  color: white;
-  padding: 8px 12px;
-  text-align: center;
-  font-size: 13px;
-}
-
-header {
-  background: white;
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.header-inner {
-  max-width: 1150px;
-  margin: auto;
-  padding: 14px 22px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  color: var(--green);
-  font-size: 25px;
-  font-weight: 800;
-}
-
-.logo-icon {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  background: var(--green);
-  border-radius: 13px;
-  color: white;
-  font-size: 24px;
-}
-
-nav {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  font-size: 14px;
-  font-weight: bold;
-}
-
-nav a:hover { color: var(--green); }
-
-.container {
-  max-width: 1150px;
-  padding: 25px 22px 45px;
-  margin: auto;
-}
-
-.button {
-  display: inline-block;
-  border: 0;
-  border-radius: 10px;
-  padding: 12px 17px;
-  background: var(--green);
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  cursor: pointer;
-}
-
-.button:hover { background: var(--green-dark); }
-
-.button-light {
-  background: var(--green-light);
-  color: var(--green);
-}
-
-.button-outline {
-  background: white;
-  color: var(--green);
-  border: 1px solid #b8dec7;
-}
-
-.button:disabled {
-  opacity: .6;
-  cursor: not-allowed;
-}
-
-.hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  align-items: center;
-  padding: 35px 0;
-}
-
-.badge {
-  display: inline-block;
-  background: var(--green-light);
-  color: var(--green);
-  padding: 7px 12px;
-  border-radius: 30px;
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.hero h1 {
-  font-size: clamp(36px, 5vw, 56px);
-  line-height: 1.12;
-  letter-spacing: -1.5px;
-  margin: 18px 0;
-}
-
-.green-text { color: var(--green); }
-
-.hero p {
-  color: var(--muted);
-  font-size: 16px;
-}
-
-.hero-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 22px 0;
-}
-
-.hero-picture {
-  min-height: 290px;
-  background: linear-gradient(140deg, #e0f7e9, #f8fcf9);
-  border: 1px solid #d6eddf;
-  border-radius: 25px;
-  display: grid;
-  place-items: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.gift-illustration {
-  font-size: 115px;
-  filter: drop-shadow(0 15px 12px #087f4520);
-}
-
-.floating-note {
-  position: absolute;
-  background: white;
-  padding: 12px 15px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 0 8px 22px #00000008;
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.note-one { left: 15px; bottom: 20px; }
-.note-two { right: 15px; top: 20px; }
-
-.section-heading {
-  margin: 32px 0 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-}
-
-.section-heading h2 {
-  font-size: 26px;
-  margin: 0;
-}
-
-.section-heading p {
-  color: var(--muted);
-  margin: 4px 0 0;
-  font-size: 14px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.panel, .gift-card {
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 15px #12351e05;
-}
-
-.gift-card:hover {
-  border-color: #9bd3af;
-  transform: translateY(-2px);
-}
-
-.gift-card { transition: .15s; }
-
-.gift-icon {
-  width: 48px;
-  height: 48px;
-  display: grid;
-  place-items: center;
-  background: var(--green-light);
-  border-radius: 13px;
-  font-size: 25px;
-  margin-bottom: 10px;
-}
-
-.gift-card h3 { margin: 0 0 4px; font-size: 16px; }
-
-.gift-card p {
-  color: var(--muted);
-  margin: 0;
-  font-size: 13px;
-}
-
-.rate {
-  border-top: 1px solid var(--border);
-  margin-top: 12px;
-  padding-top: 10px;
-  color: var(--green);
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.two-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-}
-
-.panel h2 { margin-top: 0; }
-
-.description {
-  font-size: 14px;
-  color: var(--muted);
-}
-
-.field { margin: 13px 0; }
-
-.field label {
-  display: block;
-  font-size: 13px;
-  font-weight: bold;
-  margin-bottom: 6px;
-}
-
-.field input, .field select, .field textarea {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #d5e0d8;
-  border-radius: 9px;
-  background: white;
-  color: var(--text);
-}
-
-.field input:focus, .field select:focus, .field textarea:focus {
-  outline: 2px solid #b8e4c8;
-  border-color: var(--green);
-}
-
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 12px;
-}
-
-.notice {
-  background: #fff7df;
-  border: 1px solid #f0dfa9;
-  color: #735a12;
-  border-radius: 10px;
-  padding: 13px;
-  font-size: 13px;
-  margin: 15px 0;
-}
-
-.green-notice {
-  background: var(--green-light);
-  border: 1px solid #cfe9d8;
-  color: var(--green-dark);
-  border-radius: 10px;
-  padding: 13px;
-  font-size: 13px;
-  margin: 15px 0;
-}
-
-.balance-box {
-  background: linear-gradient(130deg, #087f45, #10a55c);
-  color: white;
-  padding: 22px;
-  border-radius: 16px;
-  margin: 15px 0;
-}
-
-.balance-box .amount {
-  font-size: 30px;
-  font-weight: 800;
-}
-
-.balance-box small { opacity: .9; }
-
-.hidden { display: none !important; }
-
-.tabs {
-  display: flex;
-  gap: 8px;
-  margin: 15px 0;
-}
-
-.tab {
-  width: auto;
-  border: 1px solid var(--border);
-  background: white;
-  color: var(--muted);
-  border-radius: 9px;
-  padding: 9px 14px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.tab.active {
-  background: var(--green-light);
-  color: var(--green);
-  border-color: #b8dec7;
-}
-
-.message {
-  font-size: 14px;
-  overflow-wrap: anywhere;
-}
-
-.success { color: var(--green); }
-.error { color: #b42318; }
-.muted { color: var(--muted); }
-.small { font-size: 12px; }
-
-.history-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 13px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 14px;
-}
-
-.history-empty {
-  text-align: center;
-  color: var(--muted);
-  padding: 22px 8px;
-  font-size: 14px;
-}
-
-.status {
-  display: inline-block;
-  background: #fff0c7;
-  color: #805c00;
-  border-radius: 30px;
-  padding: 5px 9px;
-  font-size: 11px;
-  font-weight: bold;
-}
-
-footer {
-  background: #073e27;
-  color: white;
-  padding: 28px 22px;
-}
-
-.footer-inner {
-  max-width: 1150px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-footer p { color: #c3e0ce; font-size: 13px; }
-
-@media (max-width: 850px) {
-  .hero { grid-template-columns: 1fr; }
-  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .two-columns { grid-template-columns: 1fr; }
-  nav { gap: 12px; }
-}
-
-@media (max-width: 520px) {
-  .header-inner { padding: 11px 13px; }
-  .logo { font-size: 21px; }
-  .logo-icon { width: 36px; height: 36px; }
-  nav { gap: 9px; font-size: 12px; }
-  nav a:nth-child(2), nav a:nth-child(4) { display: none; }
-  .header-inner > .button { padding: 9px 10px; font-size: 12px; }
-  .container { padding: 18px 13px 35px; }
-  .hero h1 { font-size: 38px; }
-  .hero-picture { min-height: 230px; }
-  .gift-illustration { font-size: 90px; }
-  .grid { gap: 9px; }
-  .gift-card { padding: 13px; }
-  .panel { padding: 15px; }
-  .form-grid { grid-template-columns: 1fr; }
-  .section-heading h2 { font-size: 23px; }
-}
-  /* GiftNova refreshed design */
-body {
-  background: #ffffff;
-  color: #24352b;
-}
-
-header {
-  background: #16834a;
-  color: #ffffff;
-}
-
-nav {
-  background: #10683b;
-}
-
-h2 {
-  color: #16834a;
-}
-
-button {
-  background: #16834a;
-  color: #ffffff;
-}
-
-.gift {
-  background: #effaf3;
-  color: #17432b;
-  border: 1px solid #d6efdf;
-  border-radius: 12px;
-  padding: 20px 10px;
-}
-
-.card {
-  background: #ffffff;
-  border: 1px solid #e5eee8;
-  border-radius: 14px;
-  box-shadow: 0 4px 14px rgba(20, 80, 45, 0.08);
-}
-
-footer {
-  background: #10683b;
-  color: #ffffff;
-}
-
-@media (max-width: 599px) {
-  main {
-    padding: 12px;
-  }
-
-  .card {
-    padding: 16px;
-  }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#16834a">
+  <meta name="description" content="GiftNova — manage your gift-card account in one place.">
+  <title>GiftNova | Gift-card hub</title>
+  <style>
+    :root{--green:#16834a;--green-dark:#0e6035;--green-soft:#eaf8ef;--purple:#6f42c1;--purple-dark:#512b99;--purple-soft:#f2ecff;--ink:#1e2b23;--muted:#68756d;--line:#e2e9e4;--paper:#fff;--bg:#f7faf8;--warning:#fff7df;--warning-ink:#795d12;--danger:#b42318;--radius:18px;--shadow:0 12px 35px rgba(24,62,39,.07)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;line-height:1.55}button,input,select,textarea{font:inherit}button,a{touch-action:manipulation}a{color:inherit;text-decoration:none}button{cursor:pointer}.announcement{background:linear-gradient(90deg,var(--green-dark),var(--purple-dark));color:white;text-align:center;padding:8px 14px;font-size:13px}.site-header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.header-inner{max-width:1180px;margin:auto;padding:13px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:23px;letter-spacing:-.5px;color:var(--green)}.brand-mark{width:42px;height:42px;display:grid;place-items:center;border-radius:14px;background:linear-gradient(135deg,var(--green),var(--purple));color:white;font-size:23px;box-shadow:0 6px 15px #16834a26}.nav{display:flex;align-items:center;gap:20px;font-size:14px;font-weight:700}.nav a:hover{color:var(--purple)}.header-actions{display:flex;gap:8px;align-items:center}.wrap{max-width:1180px;margin:auto;padding:24px 20px 55px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:11px;background:var(--green);color:white;font-weight:750;padding:12px 17px;min-height:44px;transition:transform .15s,background .15s}.btn:hover{background:var(--green-dark);transform:translateY(-1px)}.btn-purple{background:var(--purple)}.btn-purple:hover{background:var(--purple-dark)}.btn-soft{background:var(--green-soft);color:var(--green-dark)}.btn-soft:hover{background:#d9f1e1}.btn-outline{background:#fff;color:var(--green);border:1px solid #c9dfd0}.btn-outline:hover{background:var(--green-soft)}.btn:disabled{opacity:.6;cursor:not-allowed;transform:none}.eyebrow{display:inline-flex;align-items:center;gap:7px;border:1px solid #d8cafa;background:var(--purple-soft);color:var(--purple-dark);border-radius:30px;padding:7px 12px;font-size:12px;font-weight:800}.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center;padding:26px 0 40px}.hero h1{font-size:clamp(36px,5vw,58px);letter-spacing:-2px;line-height:1.08;margin:17px 0}.gradient-text{background:linear-gradient(90deg,var(--green),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{color:var(--muted);max-width:580px}.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}.hero-art{min-height:300px;border-radius:28px;border:1px solid #dcebe1;background:radial-gradient(circle at 75% 20%,#e9ddff 0,transparent 35%),linear-gradient(145deg,#e4f7eb,#fff 65%);display:grid;place-items:center;position:relative;overflow:hidden}.hero-gift{font-size:125px;filter:drop-shadow(0 15px 18px #203f2a1b)}.float-card{position:absolute;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:var(--shadow);font-size:13px;font-weight:750}.float-a{left:16px;bottom:22px}.float-b{right:16px;top:20px;color:var(--purple)}.section{margin-top:28px;scroll-margin-top:95px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:15px;margin:0 0 16px}.section-head h2{font-size:clamp(22px,3vw,29px);letter-spacing:-.6px;margin:0;color:var(--ink)}.section-head p{margin:4px 0 0;color:var(--muted);font-size:14px}.tag{display:inline-flex;align-items:center;border-radius:30px;padding:5px 10px;font-size:11px;font-weight:800;background:var(--purple-soft);color:var(--purple-dark);white-space:nowrap}.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.card,.panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.gift-card{padding:18px;transition:transform .15s,border-color .15s}.gift-card:hover{transform:translateY(-2px);border-color:#c7b4f2}.gift-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:14px;background:var(--green-soft);font-size:25px;margin-bottom:11px}.gift-card:nth-child(even) .gift-icon{background:var(--purple-soft)}.gift-card h3{font-size:16px;margin:0 0 3px}.gift-card p{font-size:13px;color:var(--muted);margin:0}.rate-line{border-top:1px solid var(--line);margin-top:12px;padding-top:10px;font-size:12px;font-weight:800;color:var(--purple)}.two-col{display:grid;grid-template-columns:1fr 1fr;gap:17px}.panel{padding:22px}.panel h2,.panel h3{margin-top:0}.subtext{color:var(--muted);font-size:14px}.field{margin:13px 0}.field label{display:block;font-size:13px;font-weight:750;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid #d7e1da;border-radius:11px;padding:12px 13px;background:#fff;color:var(--ink);min-height:45px}.field textarea{resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{outline:3px solid #dcd0fa;border-color:var(--purple)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.auth-tabs{display:flex;gap:8px;margin:17px 0}.tab{flex:1;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--muted);font-weight:750;padding:10px}.tab.active{background:var(--purple-soft);color:var(--purple-dark);border-color:#d5c4f7}.text-link{border:0;padding:0;background:transparent;color:var(--purple);font-size:13px;font-weight:750;text-decoration:underline}.form-footer{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:9px 0 15px;flex-wrap:wrap}.msg{font-size:13px;overflow-wrap:anywhere;min-height:20px}.success{color:var(--green-dark)}.error{color:var(--danger)}.muted{color:var(--muted)}.small{font-size:12px}.hidden{display:none!important}.notice{padding:13px 14px;border-radius:12px;background:var(--warning);border:1px solid #f0dfa9;color:var(--warning-ink);font-size:13px;margin:14px 0}.notice-green{padding:13px 14px;border-radius:12px;background:var(--green-soft);border:1px solid #cfe9d8;color:var(--green-dark);font-size:13px;margin:14px 0}.balance-card{border-radius:16px;padding:21px;color:white;background:linear-gradient(125deg,var(--green-dark),var(--green) 55%,var(--purple));margin:16px 0}.balance-card .label{font-size:13px;opacity:.9}.balance-card .amount{font-size:30px;font-weight:850;letter-spacing:-.5px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.stat{border:1px solid var(--line);border-radius:13px;padding:13px}.stat strong{display:block;font-size:19px}.stat span{font-size:12px;color:var(--muted)}.row{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid var(--line);font-size:14px}.row:last-child{border-bottom:0}.empty{text-align:center;color:var(--muted);padding:22px 8px;font-size:14px}.status{display:inline-block;border-radius:30px;background:#fff3d1;color:#7a5a00;font-size:11px;font-weight:800;padding:5px 9px}.locked{opacity:.8}.foot{background:#123d2a;color:#fff;padding:28px 20px}.foot-inner{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap}.foot p{font-size:13px;color:#d1e6d8}.foot-links{display:flex;gap:15px;flex-wrap:wrap;font-size:13px}.foot-links a:hover{text-decoration:underline}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:850px){.hero{grid-template-columns:1fr}.hero-art{min-height:245px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.two-col{grid-template-columns:1fr}.nav{gap:12px}}
+    @media(max-width:560px){.header-inner{padding:10px 12px;gap:8px}.brand{font-size:20px}.brand-mark{width:36px;height:36px}.nav{display:none}.header-actions .btn{padding:9px 11px;font-size:12px}.wrap{padding:17px 13px 38px}.hero{padding-top:15px;gap:20px}.hero h1{font-size:39px;letter-spacing:-1.4px}.hero-art{min-height:220px}.hero-gift{font-size:90px}.grid{gap:9px}.gift-card{padding:13px}.panel{padding:16px}.form-grid{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.stats{grid-template-columns:1fr 1fr}.float-a{left:10px;bottom:12px}.float-b{right:10px;top:12px}}
+  </style>
 </head>
-
 <body>
-
-<div class="top-message">
-  Welcome to GiftNova — your gift-card hub
-</div>
-
-<header>
-  <div class="header-inner">
-    <a class="logo" href="#home">
-      <span class="logo-icon">🎁</span>
-      <span>GiftNova</span>
-    </a>
-
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#cards">Gift cards</a>
-      <a href="#sell">Sell</a>
-      <a href="#account">Account</a>
-      <a href="#support">Support</a>
-    </nav>
-
-    <a class="button" href="#account">Get started</a>
-  </div>
-</header>
-
-<main class="container">
-
-  <!-- HOMEPAGE -->
-
-  <section class="hero" id="home">
-    <div>
-      <span class="badge">✦ WELCOME TO GIFTNOVA</span>
-
-      <h1>
-        Your gift cards.<br>
-        <span class="green-text">Your next move.</span>
-      </h1>
-
-      <p>
-        Explore gift-card categories, check published rates,
-        and manage your GiftNova account from one simple dashboard.
-      </p>
-
-      <div class="hero-buttons">
-        <a class="button" href="#cards">Explore gift cards →</a>
-        <a class="button button-light" href="#sell">Sell a card</a>
-      </div>
-
-      <p class="small">
-        Create your customer account to prepare for the GiftNova launch.
-      </p>
+  <div class="announcement">Welcome to GiftNova · A simpler gift-card experience</div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="GiftNova home"><span class="brand-mark">🎁</span><span>GiftNova</span></a>
+      <nav class="nav" aria-label="Main navigation"><a href="#home">Home</a><a href="#cards">Gift cards</a><a href="#sell">Sell</a><a href="#account">Account</a><a href="#support">Support</a></nav>
+      <div class="header-actions"><a class="btn btn-purple" href="#account">Log in / Sign up</a></div>
     </div>
+  </header>
 
-    <div class="hero-picture">
-      <div class="gift-illustration">🎁</div>
-      <div class="floating-note note-one">
-        ✓ Simple dashboard
-      </div>
-      <div class="floating-note note-two">
-        💚 GiftNova
-      </div>
-    </div>
-  </section>
-
-  <!-- GIFT CARD CATEGORIES -->
-
-  <section id="cards">
-    <div class="section-heading">
+  <main class="wrap">
+    <section class="hero" id="home">
       <div>
-        <h2>Gift-card categories</h2>
-        <p>Explore the categories planned for GiftNova.</p>
+        <span class="eyebrow">✦ YOUR GIFT-CARD HUB</span>
+        <h1>Your gift cards.<br><span class="gradient-text">Your next move.</span></h1>
+        <p>Manage your GiftNova account, explore supported gift-card categories, and follow your activity from one simple place.</p>
+        <div class="hero-actions"><a class="btn" href="#account">Create your account →</a><a class="btn btn-soft" href="#cards">Explore gift cards</a></div>
+        <p class="small muted">Account access is powered by Supabase. Trading remains unavailable until rates, secure review, and payout services are configured and tested.</p>
       </div>
-      <span class="status">Rates pending setup</span>
-    </div>
+      <div class="hero-art" aria-label="Gift illustration"><div class="hero-gift">🎁</div><div class="float-card float-a">✓ Account access</div><div class="float-card float-b">✦ Green + Purple</div></div>
+    </section>
 
-    <div class="grid">
-
-      <article class="gift-card">
-        <div class="gift-icon">🍎</div>
-        <h3>Apple</h3>
-        <p>Digital and physical cards</p>
-        <div class="rate">Rate not published</div>
-      </article>
-
-      <article class="gift-card">
-        <div class="gift-icon">📦</div>
-        <h3>Amazon</h3>
-        <p>Shopping gift cards</p>
-        <div class="rate">Rate not published</div>
-      </article>
-
-      <article class="gift-card">
-        <div class="gift-icon">▶️</div>
-        <h3>Google Play</h3>
-        <p>Apps and entertainment</p>
-        <div class="rate">Rate not published</div>
-      </article>
-
-      <article class="gift-card">
-        <div class="gift-icon">🎮</div>
-        <h3>Steam</h3>
-        <p>Gaming gift cards</p>
-        <div class="rate">Rate not published</div>
-      </article>
-
-      <article class="gift-card">
-        <div class="gift-icon">🎮</div>
-        <h3>PlayStation</h3>
-        <p>Gaming and entertainment</p>
-        <div class="rate">Rate not published</div>
-      </article>
-
-      <article class="gift-card">
-        <div class="gift-icon">✨</div>
-        <h3>Razer Gold</h3>
-        <p>Gaming credit</p>
-        <div class="rate">Rate not published</div>
-      </article>
-
-      <article class="gift-card">
-        <div class="gift-icon">💳</div>
-        <h3>American Express</h3>
-        <p>Prepaid gift cards</p>
-        <div class="rate">Rate not published</div>
-      </article>
-
-      <article class="gift-card">
-        <div class="gift-icon">🛍️</div>
-        <h3>Retail cards</h3>
-        <p>Selected shopping brands</p>
-        <div class="rate">Rate not published</div>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- CUSTOMER ACCOUNT -->
-
-  <section id="account">
-    <div class="section-heading">
-      <div>
-        <h2>Your GiftNova account</h2>
-        <p>Sign up or log in to access your customer area.</p>
+    <section class="section" id="cards">
+      <div class="section-head"><div><h2>Gift-card categories</h2><p>These brands are shown for planning. A card is tradable only after GiftNova configures and verifies its rate.</p></div><span class="tag">Rates not configured</span></div>
+      <div class="grid">
+        <article class="card gift-card"><div class="gift-icon">🍎</div><h3>Apple</h3><p>Digital and physical cards</p><div class="rate-line">Rate not published</div></article>
+        <article class="card gift-card"><div class="gift-icon">📦</div><h3>Amazon</h3><p>Shopping gift cards</p><div class="rate-line">Rate not published</div></article>
+        <article class="card gift-card"><div class="gift-icon">▶️</div><h3>Google Play</h3><p>Apps and entertainment</p><div class="rate-line">Rate not published</div></article>
+        <article class="card gift-card"><div class="gift-icon">🎮</div><h3>Steam</h3><p>Gaming gift cards</p><div class="rate-line">Rate not published</div></article>
+        <article class="card gift-card"><div class="gift-icon">🎮</div><h3>PlayStation</h3><p>Gaming and entertainment</p><div class="rate-line">Rate not published</div></article>
+        <article class="card gift-card"><div class="gift-icon">✨</div><h3>Razer Gold</h3><p>Gaming credit</p><div class="rate-line">Rate not published</div></article>
+        <article class="card gift-card"><div class="gift-icon">🛍️</div><h3>Sephora</h3><p>Retail gift cards</p><div class="rate-line">Rate not published</div></article>
+        <article class="card gift-card"><div class="gift-icon">💳</div><h3>Visa / Mastercard</h3><p>Selected prepaid cards</p><div class="rate-line">Rate not published</div></article>
+        <article class="card gift-card"><div class="gift-icon">🏬</div><h3>Walmart</h3><p>Shopping gift cards</p><div class="rate-line">Rate not published</div></article>
+        <article class="card gift-card"><div class="gift-icon">🛒</div><h3>eBay</h3><p>Shopping gift cards</p><div class="rate-line">Rate not published</div></article>
+        <article class="card gift-card"><div class="gift-icon">👟</div><h3>Nike</h3><p>Retail gift cards</p><div class="rate-line">Rate not published</div></article>
+        <article class="card gift-card"><div class="gift-icon">🎁</div><h3>Other brands</h3><p>Added after review</p><div class="rate-line">Not enabled</div></article>
       </div>
-    </div>
+    </section>
 
-    <div class="two-columns">
-
-      <section class="panel">
-
-        <div id="authForms">
-          <h2>Welcome back</h2>
-          <p class="description">
-            Create an account or log in securely.
-          </p>
-
-          <div class="tabs">
-            <button class="tab active" id="showLogin" type="button">
-              Log in
-            </button>
-            <button class="tab" id="showSignup" type="button">
-              Sign up
-            </button>
+    <section class="section" id="account">
+      <div class="section-head"><div><h2>Your GiftNova account</h2><p>Create an account or log in to access customer services.</p></div><span class="tag">Secure sign-in</span></div>
+      <div class="two-col">
+        <section class="panel" aria-labelledby="authTitle">
+          <div id="authForms">
+            <h2 id="authTitle">Welcome to GiftNova</h2><p class="subtext">Sign in to your account or create one to get started.</p>
+            <div class="auth-tabs"><button class="tab active" id="showLogin" type="button">LOGIN</button><button class="tab" id="showSignup" type="button">Create Account</button></div>
+            <form id="loginForm" novalidate>
+              <div class="field"><label for="loginEmail">Email address</label><input id="loginEmail" name="email" type="email" autocomplete="email" placeholder="Enter your email address" required></div>
+              <div class="field"><label for="loginPassword">Password</label><input id="loginPassword" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required></div>
+              <div class="form-footer"><span class="small muted">Use your registered email.</span><button class="text-link" id="forgotPassword" type="button">Forgot password?</button></div>
+              <button class="btn btn-purple" id="loginButton" type="submit" style="width:100%">LOGIN</button>
+              <p class="small muted" style="text-align:center;margin-bottom:0">Don't have an account? <button class="text-link" id="signupFromLogin" type="button">Create Account</button></p>
+            </form>
+            <form id="signupForm" class="hidden" novalidate>
+              <div class="field"><label for="signupName">Full name</label><input id="signupName" name="name" type="text" autocomplete="name" placeholder="Enter your full name" maxlength="100" required></div>
+              <div class="field"><label for="signupEmail">Email address</label><input id="signupEmail" name="email" type="email" autocomplete="email" placeholder="Enter your email address" required></div>
+              <div class="field"><label for="signupPassword">Create password</label><input id="signupPassword" name="password" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required></div>
+              <div class="field"><label for="confirmPassword">Confirm password</label><input id="confirmPassword" name="confirmPassword" type="password" autocomplete="new-password" minlength="8" placeholder="Enter your password again" required></div>
+              <button class="btn btn-purple" id="signupButton" type="submit" style="width:100%">CREATE ACCOUNT</button>
+              <p class="small muted">Use a unique password. If email confirmation is enabled, check your inbox to finish registration.</p>
+              <p class="small muted" style="text-align:center">Already have an account? <button class="text-link" id="loginFromSignup" type="button">LOGIN</button></p>
+            </form>
+            <form id="resetForm" class="hidden" novalidate>
+              <h3>Reset your password</h3><p class="subtext">Enter your email and we'll ask Supabase to send a password-reset link.</p>
+              <div class="field"><label for="resetEmail">Email address</label><input id="resetEmail" type="email" autocomplete="email" placeholder="Enter your email address" required></div>
+              <button class="btn btn-purple" id="resetButton" type="submit" style="width:100%">SEND RESET LINK</button>
+              <p class="small" style="text-align:center"><button class="text-link" id="backToLogin" type="button">Back to LOGIN</button></p>
+            </form>
+            <p id="authMessage" class="msg" aria-live="polite"></p>
+            <p id="authStatus" class="small muted" aria-live="polite">Connecting to account service…</p>
           </div>
+          <div id="accountArea" class="hidden">
+            <h2>Your dashboard</h2><p class="subtext">You're signed in to GiftNova.</p>
+            <div class="balance-card"><div class="label">Available balance</div><div class="amount">₦0.00</div><div class="small">Placeholder only — no real balance is connected.</div></div>
+            <p>Signed in as <strong id="customerEmail"></strong></p>
+            <div class="stats"><div class="stat"><strong>0</strong><span>Submissions</span></div><div class="stat"><strong>0</strong><span>Completed</span></div><div class="stat"><strong>0</strong><span>Pending</span></div></div>
+            <div class="notice">Your trading history and wallet are not connected yet. This screen does not represent real funds.</div>
+            <button class="btn btn-outline" id="logoutButton" type="button">Log out</button>
+          </div>
+        </section>
+        <section class="panel">
+          <h2>Transaction history</h2><p class="subtext">Your real transaction records will appear here after the secure database is configured.</p>
+          <div class="row"><span>Gift-card submissions</span><strong class="muted">Not connected</strong></div><div class="row"><span>Review status</span><strong class="muted">Not connected</strong></div><div class="row"><span>Payout history</span><strong class="muted">Not connected</strong></div>
+          <div class="empty">📄<br><strong>No transaction history yet</strong><br>Transactions will appear here after the backend is implemented.</div>
+        </section>
+      </div>
+    </section>
 
-          <form id="loginForm">
-            <div class="field">
-              <label for="loginEmail">Email address</label>
-              <input
-                id="loginEmail"
-                type="email"
-                autocomplete="email"
-                placeholder="you@example.com"
-                required
-              >
+    <section class="section" id="sell">
+      <div class="section-head"><div><h2>Sell a gift card</h2><p>Submission form design preview. Real submissions are disabled for safety.</p></div><span class="tag">Not active yet</span></div>
+      <div class="two-col">
+        <section class="panel"><h2>Card information</h2>
+          <div class="notice">Do not upload card images or enter redemption codes on this preview. Secure private storage, verified rates, and a review process must be configured first.</div>
+          <form id="sellForm">
+            <div class="form-grid">
+              <div class="field"><label for="brand">Gift-card brand</label><select id="brand" required><option value="">Select brand</option><option>Apple</option><option>Amazon</option><option>Google Play</option><option>Steam</option><option>PlayStation</option><option>Razer Gold</option><option>Sephora</option><option>Walmart</option><option>eBay</option><option>Nike</option><option>Visa / Mastercard</option></select></div>
+              <div class="field"><label for="currency">Card currency</label><select id="currency" required><option value="">Select currency</option><option>USD</option><option>GBP</option><option>EUR</option><option>CAD</option><option>AUD</option></select></div>
+              <div class="field"><label for="cardType">Card type</label><select id="cardType" required><option value="">Select type</option><option>Physical card</option><option>Digital card</option></select></div>
+              <div class="field"><label for="cardValue">Card value</label><input id="cardValue" type="number" min="1" step="0.01" placeholder="e.g. 100" required></div>
+              <div class="field"><label for="quantity">Quantity</label><input id="quantity" type="number" min="1" max="20" value="1" required></div>
+              <div class="field"><label for="cardImage">Card image</label><input id="cardImage" type="file" accept="image/*" disabled aria-describedby="imageHelp"><span id="imageHelp" class="small muted">Uploads are disabled until secure storage is ready.</span></div>
             </div>
-
-            <div class="field">
-              <label for="loginPassword">Password</label>
-              <input
-                id="loginPassword"
-                type="password"
-                autocomplete="current-password"
-                placeholder="Enter your password"
-                required
-              >
-            </div>
-
-            <button class="button" id="loginButton" type="submit"
-                    style="width:100%">
-              Log in
-            </button>
+            <div class="notice-green"><strong>Estimated price</strong><div id="estimate">Unavailable — no verified rate configured.</div><span class="small">An estimate will use a backend-configured rate, not a guessed value.</span></div>
+            <button class="btn" type="submit" style="width:100%">SUBMISSIONS NOT YET AVAILABLE</button><p id="sellMessage" class="msg" aria-live="polite"></p>
           </form>
-
-          <form id="signupForm" class="hidden">
-            <div class="field">
-              <label for="signupEmail">Email address</label>
-              <input
-                id="signupEmail"
-                type="email"
-                autocomplete="email"
-                placeholder="you@example.com"
-                required
-              >
-            </div>
-
-            <div class="field">
-              <label for="signupPassword">Create password</label>
-              <input
-                id="signupPassword"
-                type="password"
-                autocomplete="new-password"
-                minlength="8"
-                placeholder="At least 8 characters"
-                required
-              >
-            </div>
-
-            <button class="button" id="signupButton" type="submit"
-                    style="width:100%">
-              Create account
-            </button>
-
-            <p class="small muted">
-              Use a unique password that you do not use on other websites.
-            </p>
-          </form>
-
-          <p id="authMessage" class="message" aria-live="polite"></p>
-        </div>
-
-        <div id="accountArea" class="hidden">
-          <h2>Your dashboard</h2>
-          <p class="description">You are signed in to GiftNova.</p>
-
-          <div class="balance-box">
-            <div>Available balance</div>
-            <div class="amount">₦0.00</div>
-            <small>
-              Real balances will be connected after secure backend setup.
-            </small>
-          </div>
-
-          <p>
-            Signed in as:
-            <strong id="customerEmail"></strong>
-          </p>
-
-          <button class="button button-outline" id="logoutButton"
-                  type="button">
-            Log out
-          </button>
-
-          <p class="small muted">
-            This balance is a display placeholder, not money held by GiftNova.
-          </p>
-        </div>
-
-        <p id="authStatus" class="small muted" aria-live="polite">
-          Connecting to account service…
-        </p>
-      </section>
-
-      <!-- TRANSACTION HISTORY -->
-
-      <section class="panel">
-        <h2>Transaction history</h2>
-        <p class="description">
-          Your transaction history will appear here after the secure database
-          is configured.
-        </p>
-
-        <div class="history-row">
-          <span>Gift-card submissions</span>
-          <strong>Not connected</strong>
-        </div>
-
-        <div class="history-row">
-          <span>Approved trades</span>
-          <strong>Not connected</strong>
-        </div>
-
-        <div class="history-row">
-          <span>Payout history</span>
-          <strong>Not connected</strong>
-        </div>
-
-        <div class="history-empty">
-          📄<br>
-          <strong>No transactions to show</strong>
-          <br>
-          History will be available after backend setup.
-        </div>
-      </section>
-
-    </div>
-  </section>
-
-  <!-- SELL GIFT CARD -->
-
-  <section id="sell">
-    <div class="section-heading">
-      <div>
-        <h2>Sell a gift card</h2>
-        <p>Prepare the details for a future secure submission.</p>
+        </section>
+        <section class="panel"><h2>How GiftNova will work</h2><div class="row"><span><strong>1. Create an account</strong><br><span class="small muted">Register and verify your email.</span></span><span>✓</span></div><div class="row"><span><strong>2. Check the rate</strong><br><span class="small muted">Only current, verified rates will be shown.</span></span><span>—</span></div><div class="row"><span><strong>3. Submit for review</strong><br><span class="small muted">A secure review system is required.</span></span><span>—</span></div><div class="row"><span><strong>4. Track your status</strong><br><span class="small muted">See review and payout updates.</span></span><span>—</span></div><div class="notice">A photo alone cannot prove that a gift card is genuine or unused. Card submissions must remain pending until properly verified.</div></section>
       </div>
-      <span class="status">Coming soon</span>
-    </div>
+    </section>
 
-    <div class="two-columns">
-
-      <section class="panel">
-        <h2>Card information</h2>
-
-        <p class="description">
-          This form is a preview. It does not submit or store card details.
-        </p>
-
-        <form id="sellForm">
-
-          <div class="form-grid">
-
-            <div class="field">
-              <label for="brand">Gift-card brand</label>
-              <select id="brand" required>
-                <option value="">Select brand</option>
-                <option>Apple</option>
-                <option>Amazon</option>
-                <option>Google Play</option>
-                <option>Steam</option>
-                <option>PlayStation</option>
-                <option>Razer Gold</option>
-                <option>American Express</option>
-                <option>Other</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="currency">Card currency</label>
-              <select id="currency" required>
-                <option value="">Select currency</option>
-                <option>USD</option>
-                <option>GBP</option>
-                <option>EUR</option>
-                <option>CAD</option>
-                <option>AUD</option>
-                <option>NGN</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="cardType">Card type</label>
-              <select id="cardType" required>
-                <option value="">Select type</option>
-                <option>Physical card</option>
-                <option>Digital card</option>
-              </select>
-            </div>
-
-            <div class="field">
-              <label for="cardValue">Card value</label>
-              <input id="cardValue" type="number" min="1" step="0.01"
-                     placeholder="e.g. 100" required>
-            </div>
-
-            <div class="field">
-              <label for="quantity">Quantity</label>
-              <input id="quantity" type="number" min="1" max="20"
-                     value="1" required>
-            </div>
-
-            <div class="field">
-              <label for="cardImage">Card image (preview only)</label>
-              <input id="cardImage" type="file" accept="image/*">
-            </div>
-
-          </div>
-
-          <div class="green-notice">
-            <strong>Estimated price:</strong>
-            <div id="estimate">Not available yet</div>
-            A verified rate must be configured before an estimate can be shown.
-          </div>
-
-          <div class="notice">
-            Do not enter gift-card PINs, redemption codes, or full card
-            numbers. Secure uploads and server-side review must be configured
-            before this service can accept submissions.
-          </div>
-
-          <button class="button" type="submit" style="width:100%">
-            Submissions not yet available
-          </button>
-
-          <p id="sellMessage" class="message" aria-live="polite"></p>
-        </form>
-      </section>
-
-      <section class="panel">
-        <h2>How GiftNova will work</h2>
-
-        <div class="history-row">
-          <span>
-            <strong>1. Create your account</strong><br>
-            <span class="muted small">Sign up and confirm your email.</span>
-          </span>
-          <span>✓</span>
-        </div>
-
-        <div class="history-row">
-          <span>
-            <strong>2. Check the rate</strong><br>
-            <span class="muted small">Verified rates will be published.</span>
-          </span>
-          <span>—</span>
-        </div>
-
-        <div class="history-row">
-          <span>
-            <strong>3. Submit for review</strong><br>
-            <span class="muted small">A secure review system is required.</span>
-          </span>
-          <span>—</span>
-        </div>
-
-        <div class="history-row">
-          <span>
-            <strong>4. Track your status</strong><br>
-            <span class="muted small">View review and payout updates.</span>
-          </span>
-          <span>—</span>
-        </div>
-
-        <div class="notice">
-          Real trading and payouts must stay disabled until database security,
-          administrator permissions, and payment handling are tested.
-        </div>
-      </section>
-
-    </div>
-  </section>
-
-  <!-- CUSTOMER SUPPORT -->
-
-  <section id="support">
-    <div class="section-heading">
-      <div>
-        <h2>Customer support</h2>
-        <p>Help and complaints for GiftNova customers.</p>
+    <section class="section" id="support">
+      <div class="section-head"><div><h2>Customer support</h2><p>Support and complaint features will be connected after the backend is ready.</p></div><span class="tag">Preview</span></div>
+      <div class="two-col">
+        <section class="panel"><h2>Contact support</h2><form id="supportForm"><div class="field"><label for="supportEmail">Your email</label><input id="supportEmail" type="email" placeholder="Enter your email address" required></div><div class="field"><label for="supportTopic">Topic</label><select id="supportTopic" required><option value="">Choose a topic</option><option>Account access</option><option>Gift-card submission</option><option>Transaction status</option><option>Complaint</option><option>Other</option></select></div><div class="field"><label for="supportDetails">Message</label><textarea id="supportDetails" rows="4" maxlength="1500" placeholder="How can we help?" required></textarea></div><button class="btn btn-purple" type="submit">SUPPORT NOT CONNECTED</button><p id="supportMessage" class="msg" aria-live="polite"></p></form></section>
+        <section class="panel"><h2>Admin services</h2><p class="subtext">Admin tools must be protected by server-side role permissions. An email address alone does not grant admin access.</p><div class="row"><span>Review submissions</span><strong class="muted">Not enabled</strong></div><div class="row"><span>Manage rates</span><strong class="muted">Not enabled</strong></div><div class="row"><span>Review payouts</span><strong class="muted">Not enabled</strong></div><div class="row"><span>Review complaints</span><strong class="muted">Not enabled</strong></div><div class="notice">Do not enable real trading or payouts until database rules, administrator permissions, audit records, and payment processes have been tested.</div></section>
       </div>
-    </div>
-
-    <div class="two-columns">
-
-      <section class="panel">
-        <h2>Contact support</h2>
-        <p class="description">
-          The support form is a preview and does not send messages yet.
-        </p>
-
-        <form id="supportForm">
-          <div class="field">
-            <label for="supportEmail">Your email</label>
-            <input id="supportEmail" type="email" required
-                   placeholder="you@example.com">
-          </div>
-
-          <div class="field">
-            <label for="supportTopic">Topic</label>
-            <select id="supportTopic" required>
-              <option value="">Choose a topic</option>
-              <option>Account access</option>
-              <option>Gift-card submission</option>
-              <option>Transaction status</option>
-              <option>Complaint</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="supportDetails">Message</label>
-            <textarea id="supportDetails" rows="4" maxlength="1500"
-                      required placeholder="How can we help?"></textarea>
-          </div>
-
-          <button class="button" type="submit">
-            Support service coming soon
-          </button>
-
-          <p id="supportMessage" class="message" aria-live="polite"></p>
-        </form>
-      </section>
-
-      <section class="panel">
-        <h2>Admin dashboard</h2>
-        <p class="description">
-          Administrator features will be connected through secure backend
-          permissions.
-        </p>
-
-        <div class="history-row">
-          <span>Review card submissions</span>
-          <strong>Not enabled</strong>
-        </div>
-
-        <div class="history-row">
-          <span>Manage gift-card rates</span>
-          <strong>Not enabled</strong>
-        </div>
-
-        <div class="history-row">
-          <span>Review transactions</span>
-          <strong>Not enabled</strong>
-        </div>
-
-        <div class="history-row">
-          <span>Review complaints</span>
-          <strong>Not enabled</strong>
-        </div>
-
-        <div class="notice">
-          Admin permissions must be enforced by the backend, not just hidden
-          in the website's visual design.
-        </div>
-      </section>
-
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="logo" style="color:white">
-        <span class="logo-icon">🎁</span>
-        <span>GiftNova</span>
-      </div>
-      <p>Your gift-card hub.</p>
-    </div>
-
-    <div>
-      <strong>Explore GiftNova</strong>
-      <p>
-        <a href="#cards">Gift cards</a> ·
-        <a href="#sell">Sell a card</a> ·
-        <a href="#support">Support</a>
-      </p>
-      <p>© 2026 GiftNova. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
-
-<!-- EXISTING SUPABASE ACCOUNT CONNECTION -->
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-(function () {
-  "use strict";
-
-  /*
-    These connection settings are retained from your existing website.
-    Never put a Supabase service-role secret in this file.
-  */
-
-  const SUPABASE_URL =
-    "https://qwovyidwvvqmgetoyzwe.supabase.co";
-
-  const SUPABASE_PUBLISHABLE_KEY =
-    "sb_publishable_JQ8gJtHVrVN1u6wsaEGwBg_CPZ6RKBf";
-
-  const byId = function (id) {
-    return document.getElementById(id);
-  };
-
-  const authForms = byId("authForms");
-  const accountArea = byId("accountArea");
-  const authStatus = byId("authStatus");
-  const authMessage = byId("authMessage");
-
-  function showMessage(element, text, type) {
-    element.textContent = text;
-    element.className = "message " + (type || "");
-  }
-
-  function setBusy(button, busy, label) {
-    button.disabled = busy;
-    button.textContent = busy ? "Please wait..." : label;
-  }
-
-  byId("showLogin").addEventListener("click", function () {
-    byId("loginForm").classList.remove("hidden");
-    byId("signupForm").classList.add("hidden");
-    byId("showLogin").classList.add("active");
-    byId("showSignup").classList.remove("active");
-    showMessage(authMessage, "", "");
-  });
-
-  byId("showSignup").addEventListener("click", function () {
-    byId("signupForm").classList.remove("hidden");
-    byId("loginForm").classList.add("hidden");
-    byId("showSignup").classList.add("active");
-    byId("showLogin").classList.remove("active");
-    showMessage(authMessage, "", "");
-  });
-
-  /*
-    These two forms are deliberately previews. They do not transmit
-    card details or support messages until secure backend services exist.
-  */
-
-  byId("sellForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    showMessage(
-      byId("sellMessage"),
-      "Gift-card submissions are not active yet. Nothing was sent or saved.",
-      "error"
-    );
-  });
-
-  byId("supportForm").addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    showMessage(
-      byId("supportMessage"),
-      "Support messaging is not connected yet. Nothing was sent or saved.",
-      "error"
-    );
-  });
-
-  if (!window.supabase) {
-    authStatus.textContent = "Unable to load the account service.";
-
-    showMessage(
-      authMessage,
-      "Refresh the page and try again.",
-      "error"
-    );
-
-    return;
-  }
-
-  const client = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
-  );
-
-  window.giftNovaSupabase = client;
-
-  function updateAccount(user) {
-    const loggedIn = Boolean(user);
-
-    authForms.classList.toggle("hidden", loggedIn);
-    accountArea.classList.toggle("hidden", !loggedIn);
-
-    authStatus.textContent = loggedIn
-      ? "You are signed in."
-      : "Please sign up or log in to access your customer account.";
-
-    byId("customerEmail").textContent =
-      loggedIn && user.email ? user.email : "";
-  }
-
-  client.auth.onAuthStateChange(function (_event, session) {
-    updateAccount(session && session.user ? session.user : null);
-  });
-
-  byId("signupForm").addEventListener("submit", async function (event) {
-    event.preventDefault();
-
-    const button = byId("signupButton");
-    const email = byId("signupEmail").value.trim();
-    const password = byId("signupPassword").value;
-
-    setBusy(button, true, "Create account");
-    showMessage(authMessage, "", "");
-
-    try {
-      const result = await client.auth.signUp({
-        email: email,
-        password: password
-      });
-
-      if (result.error) {
-        throw result.error;
-      }
-
-      if (result.data.session) {
-        showMessage(
-          authMessage,
-          "Your account was created successfully.",
-          "success"
-        );
-      } else {
-        showMessage(
-          authMessage,
-          "Registration received. Check your email for a confirmation link before logging in.",
-          "success"
-        );
-      }
-    } catch (error) {
-      showMessage(
-        authMessage,
-        error.message || "Registration failed. Please try again.",
-        "error"
-      );
-    } finally {
-      setBusy(button, false, "Create account");
-    }
-  });
-
-  byId("loginForm").addEventListener("submit", async function (event) {
-    event.preventDefault();
-
-    const button = byId("loginButton");
-    const email = byId("loginEmail").value.trim();
-    const password = byId("loginPassword").value;
-
-    setBusy(button, true, "Log in");
-    showMessage(authMessage, "", "");
-
-    try {
-      const result = await client.auth.signInWithPassword({
-        email: email,
-        password: password
-      });
-
-      if (result.error) {
-        throw result.error;
-      }
-
-      updateAccount(result.data.user);
-
-      showMessage(
-        authMessage,
-        "You are now logged in.",
-        "success"
-      );
-    } catch (error) {
-      showMessage(
-        authMessage,
-        error.message || "Login failed. Check your details and try again.",
-        "error"
-      );
-    } finally {
-      setBusy(button, false, "Log in");
-    }
-  });
-
-  byId("logoutButton").addEventListener("click", async function () {
-    const button = byId("logoutButton");
-
-    button.disabled = true;
-
-    try {
-      const result = await client.auth.signOut();
-
-      if (result.error) {
-        throw result.error;
-      }
-
-      updateAccount(null);
-
-      showMessage(
-        authMessage,
-        "You have logged out.",
-        "success"
-      );
-    } catch (error) {
-      showMessage(
-        authMessage,
-        error.message || "Logout failed. Please try again.",
-        "error"
-      );
-    } finally {
-      button.disabled = false;
-    }
-  });
-
-  client.auth.getSession()
-    .then(function (result) {
-      if (result.error) {
-        throw result.error;
-      }
-
-      updateAccount(
-        result.data.session ? result.data.session.user : null
-      );
-    })
-    .catch(function () {
-      authStatus.textContent =
-        "Unable to check your session. Refresh the page and try again.";
-    });
-
-})();
-</script>
-
+    </section>
+  </main>
+
+  <footer class="foot"><div class="foot-inner"><div><a class="brand" href="#home" style="color:#fff"><span class="brand-mark">🎁</span><span>GiftNova</span></a><p>Your gift-card hub.</p></div><div><strong>Explore GiftNova</strong><div class="foot-links" style="margin-top:9px"><a href="#cards">Gift cards</a><a href="#sell">Sell a card</a><a href="#account">Account</a><a href="#support">Support</a></div><p>© 2026 GiftNova. All rights reserved.</p></div></div></footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+  (function(){
+    'use strict';
+    // These are the existing public Supabase project settings from the current site.
+    // Never put a Supabase service-role secret in public website code.
+    const SUPABASE_URL = 'https://qwovyidwvvqmgetoyzwe.supabase.co';
+    const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_JQ8gJtHVrVN1u6wsaEGwBg_CPZ6RKBf';
+    const $ = id => document.getElementById(id);
+    const authForms = $('authForms'), accountArea = $('accountArea'), authMessage = $('authMessage'), authStatus = $('authStatus');
+    function message(el,text,kind){el.textContent=text;el.className='msg '+(kind||'');}
+    function busy(button,on,label){button.disabled=on;button.textContent=on?'Please wait…':label;}
+    function showForm(which){['loginForm','signupForm','resetForm'].forEach(id=>$(id).classList.toggle('hidden',id!==which));$('showLogin').classList.toggle('active',which==='loginForm');$('showSignup').classList.toggle('active',which==='signupForm');message(authMessage,'','');}
+    $('showLogin').addEventListener('click',()=>showForm('loginForm'));
+    $('showSignup').addEventListener('click',()=>showForm('signupForm'));
+    $('signupFromLogin').addEventListener('click',()=>showForm('signupForm'));
+    $('loginFromSignup').addEventListener('click',()=>showForm('loginForm'));
+    $('forgotPassword').addEventListener('click',()=>{ $('resetEmail').value=$('loginEmail').value.trim(); showForm('resetForm'); });
+    $('backToLogin').addEventListener('click',()=>showForm('loginForm'));
+    $('sellForm').addEventListener('submit',e=>{e.preventDefault();message($('sellMessage'),'Gift-card submissions are not active. Nothing was uploaded or saved.','error');});
+    $('supportForm').addEventListener('submit',e=>{e.preventDefault();message($('supportMessage'),'Support is not connected yet. Nothing was sent or saved.','error');});
+    if(!window.supabase){authStatus.textContent='The account library did not load. Check your connection and refresh.';message(authMessage,'Account service unavailable. Please refresh and try again.','error');return;}
+    const client=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY);
+    function updateAccount(user){const loggedIn=!!user;authForms.classList.toggle('hidden',loggedIn);accountArea.classList.toggle('hidden',!loggedIn);authStatus.textContent=loggedIn?'You are signed in.':'Sign in or create an account to access customer services.';$('customerEmail').textContent=loggedIn&&user.email?user.email:'';}
+    client.auth.onAuthStateChange((_event,session)=>updateAccount(session&&session.user?session.user:null));
+    $('signupForm').addEventListener('submit',async e=>{e.preventDefault();const button=$('signupButton'),name=$('signupName').value.trim(),email=$('signupEmail').value.trim(),password=$('signupPassword').value,confirm=$('confirmPassword').value;if(!name){message(authMessage,'Please enter your full name.','error');return;}if(password.length<8){message(authMessage,'Your password must contain at least 8 characters.','error');return;}if(password!==confirm){message(authMessage,'The passwords do not match. Please check them.','error');return;}busy(button,true,'CREATE ACCOUNT');message(authMessage,'','');try{const result=await client.auth.signUp({email,password,options:{data:{full_name:name}}});if(result.error)throw result.error;if(result.data.session){updateAccount(result.data.user);message(authMessage,'Your account has been created.','success');}else{message(authMessage,'Registration received. Check your email for a confirmation link before logging in.','success');}}catch(err){message(authMessage,err.message||'Registration failed. Please try again.','error');}finally{busy(button,false,'CREATE ACCOUNT');}});
+    $('loginForm').addEventListener('submit',async e=>{e.preventDefault();const button=$('loginButton'),email=$('loginEmail').value.trim(),password=$('loginPassword').value;busy(button,true,'LOGIN');message(authMessage,'','');try{const result=await client.auth.signInWithPassword({email,password});if(result.error)throw result.error;updateAccount(result.data.user);message(authMessage,'You are now logged in.','success');}catch(err){message(authMessage,err.message||'Login failed. Check your email and password.','error');}finally{busy(button,false,'LOGIN');}});
+    $('resetForm').addEventListener('submit',async e=>{e.preventDefault();const button=$('resetButton'),email=$('resetEmail').value.trim();busy(button,true,'SEND RESET LINK');message(authMessage,'','');try{const result=await client.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin+window.location.pathname});if(result.error)throw result.error;message(authMessage,'If this email is registered, a password-reset message should arrive. Check your inbox and spam folder.','success');}catch(err){message(authMessage,err.message||'Could not request a reset link. Please try again.','error');}finally{busy(button,false,'SEND RESET LINK');}});
+    $('logoutButton').addEventListener('click',async()=>{const button=$('logoutButton');button.disabled=true;try{const result=await client.auth.signOut();if(result.error)throw result.error;updateAccount(null);showForm('loginForm');message(authMessage,'You have logged out.','success');}catch(err){message(authMessage,err.message||'Logout failed. Please try again.','error');}finally{button.disabled=false;}});
+    client.auth.getSession().then(result=>{if(result.error)throw result.error;updateAccount(result.data.session?result.data.session.user:null);}).catch(()=>{authStatus.textContent='Could not check your session. Refresh and try again.';});
+  })();
+  </script>
 </body>
-</html>
+  </html>
+                                                                              
